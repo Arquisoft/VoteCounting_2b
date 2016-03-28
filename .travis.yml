@@ -3,3 +3,11 @@ jdk:
 - oraclejdk8
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+notifications:
+  email:
+    recipients:
+      - UO237104@uniovi.es
+      - uo240772@uniovi.es
+      - uo239995@uniovi.es
+    on_success: change
+    on_failure: always
