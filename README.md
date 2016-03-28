@@ -9,6 +9,9 @@ Vote Counting
 
 # Authors
 
+* Francisco De Borja Fernández González
+* Sergio Moradas Quintana
+* Marcelo Torrejón Manso
 * Jose Labra
 
 
