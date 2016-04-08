@@ -1,17 +1,17 @@
 package es.uniovi.asw.presentation;
 
-import javax.faces.bean.ApplicationScoped;
-import org.springframework.stereotype.Service;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
-@Service
-@ApplicationScoped
+@Component("BeanPrueba")
+@Scope("request")
 public class BeanPrueba {
 
-	public String getPrueba() {
-		return "Hello guys!";
+	public String prueba() {
+		return "Resultados";
 	}
 	
-	public String getMostrar(){
+	public String mostrar(){
 		System.out.println("Pase");
 		return "exito";
 	}

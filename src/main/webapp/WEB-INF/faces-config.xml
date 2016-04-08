@@ -11,10 +11,13 @@
   	</application>
   	
   	<navigation-rule>
-	<from-view-id>/principal.xhtml</from-view-id>
-	<navigation-case>
-		<from-outcome>exito</from-outcome>
-		<to-view-id>/index.xhtml</to-view-id>
-	</navigation-case>
+	<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-action>#{BeanPrueba.mostrar}</from-action>
+			<from-outcome>exito</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
+			<redirect/>
+		</navigation-case>
+		
     </navigation-rule>	
 </faces-config>
