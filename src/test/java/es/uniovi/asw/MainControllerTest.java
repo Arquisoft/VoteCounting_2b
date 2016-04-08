@@ -18,8 +18,10 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import es.uniovi.asw.voterCount.Main;
+
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = Application.class)
+@SpringApplicationConfiguration(classes = Main.class)
 @WebAppConfiguration
 @IntegrationTest({ "server.port=0" })
 public class MainControllerTest {
@@ -36,7 +38,7 @@ public class MainControllerTest {
 
   @Test
   public void testLanding() throws Exception {
-    mvc.perform(get("/")).andExpect(status().isOk()).andExpect(content().string(containsString("Voting")));
+    mvc.perform(get("/principal.xhtml")).andExpect(status().isOk()).andExpect(content().string(containsString("Bienvenido a la pagina principal")));
   }
 
 }

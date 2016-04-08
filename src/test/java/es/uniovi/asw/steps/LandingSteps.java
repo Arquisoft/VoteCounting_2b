@@ -39,11 +39,11 @@ public class LandingSteps {
   protected int port;
 
   
-  @When("^the client calls /$")
+  @When("^the client calls /principal\\.xhtml$$")
   public void the_client_calls() throws Throwable {
     Assert.notNull(context);
     this.mvc = MockMvcBuilders.webAppContextSetup(context).build();
-    result = mvc.perform(get("/")).andReturn();
+    result = mvc.perform(get("/principal.xhtml")).andReturn();
   }
 
   @Then("^the client receives status code of (\\d+)$")
