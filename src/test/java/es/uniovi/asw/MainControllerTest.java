@@ -38,7 +38,7 @@ public class MainControllerTest {
 
   @Test
   public void testLanding() throws Exception {
-    mvc.perform(get("/principal.xhtml")).andExpect(status().isOk()).andExpect(content().string(containsString("Bienvenido a la pagina principal")));
+    mvc.perform(get("/principal.xhtml")).andExpect(status().isOk()).andExpect(content().string(containsString("Complete los siguientes datos")));
   }
 
 }
