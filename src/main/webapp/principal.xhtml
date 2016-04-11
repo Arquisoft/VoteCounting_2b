@@ -1,17 +1,55 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:b="http://bootsfaces.net/ui"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"
-       xmlns:p="http://primefaces.org/ui">
-    <h:head>
-        <title>Prueba</title>
-    </h:head>
-    <h:body>
-    	<h:form>
-    	<h1><h:outputText value="Bienvenido a la pagina principal"></h:outputText ></h1>
-       <p:commandButton value="Siguiente Pagina" action="#{BeanPrueba.mostrar}"/>
-       </h:form>
-    </h:body>
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Prueba</title>
+</h:head>
+<h:body>
+	<h:form>
+		<h1>
+			<h:outputText value="Complete los siguientes datos"></h:outputText>
+		</h1>
+		
+		<p:panel id="panelElecciones">
+			<h:panelGrid columns="3" cellpadding="5">
+				<p:outputLabel for="nombreElecciones" value="Nombre " />
+				
+				<p:inputText id="nombreElecciones" required="true"
+							label="Nombre del proceso electoral:">
+				</p:inputText>
+				
+				<p:message for="nombreElecciones" />
+				
+				
+				<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
+				<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
+				
+				
+				<p:outputLabel for="fechaInicio" value="Fecha de inicio" />
+				<p:inputMask id="fechaInicio" mask="99/99/9999" required="true" label="Fecha de inicio:" />
+				
+				<p:message for="fechaInicio" />
+				
+				
+				<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
+				<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
+				
+				
+				<p:outputLabel for="fechaFin" value="Fecha de cierre" />
+				<p:inputMask id="fechaFin" mask="99/99/9999" required="true" label="Fecha de cierre:" />
+				
+				<p:message for="fechaFin" />
+			</h:panelGrid>
+
+			<p:commandButton value="buscar" update="panelElecciones"
+				actionListener="#{BeanPrueba.buscar}"
+				icon="ui-icon-search" />
+		</p:panel>
+	</h:form>
+	
+</h:body>
 </html>
