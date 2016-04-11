@@ -59,12 +59,14 @@ public abstract class Election
 	{
 		this.expiryDate = expiryDate;
 	}
-
-	public String getInstructions() {
+	
+	public String getInstructions()
+	{
 		return instructions;
 	}
 
-	public void setInstructions(String instructions) {
+	public void setInstructions(String instructions)
+	{
 		this.instructions = instructions;
 	}
 	
@@ -83,7 +85,8 @@ public abstract class Election
 		return new HashSet<>(turnout);
 	}
 	
-	Set<Turnout> _getTurnout() {
+	Set<Turnout> _getTurnout()
+	{
 		return turnout;
 	}
 	
@@ -104,9 +107,11 @@ public abstract class Election
 	{
 		final int prime = 31;
 		int result = 1;
+		
 		result = prime * result + ((expiryDate == null) ? 0 : expiryDate.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((startDate == null) ? 0 : startDate.hashCode());
+		
 		return result;
 	}
 	
