@@ -11,3 +11,10 @@ notifications:
       - uo239995@uniovi.es
     on_success: change
     on_failure: always
+
+  webhooks:
+    urls:
+      - https://webhooks.gitter.im/e/b639b5dee62f99a89ff6
+    on_success: change
+    on_failure: always
+    on_start: never
