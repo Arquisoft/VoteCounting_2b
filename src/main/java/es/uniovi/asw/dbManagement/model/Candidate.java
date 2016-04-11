@@ -1,4 +1,4 @@
-package es.uniovi.asw.model;
+package es.uniovi.asw.dbManagement.model;
 
 import java.util.HashSet;
 import java.util.Set;

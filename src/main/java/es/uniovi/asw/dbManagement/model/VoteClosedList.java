@@ -1,4 +1,4 @@
-package es.uniovi.asw.model;
+package es.uniovi.asw.dbManagement.model;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;

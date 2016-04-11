@@ -1,4 +1,4 @@
-package es.uniovi.asw.model;
+package es.uniovi.asw.dbManagement.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
