@@ -1,7 +1,5 @@
 package es.uniovi.asw.presentation;
 
-
-
 import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
@@ -13,7 +11,8 @@ import org.primefaces.model.chart.ChartSeries;
 import org.primefaces.model.chart.HorizontalBarChartModel;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
- 
+
+
 @Component("BeanChartView")
 @Scope("request")
 public class ChartView implements Serializable {
