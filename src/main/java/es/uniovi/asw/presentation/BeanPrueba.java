@@ -14,7 +14,7 @@ public class BeanPrueba
 	}
 	
 	
-	public String buscar(String nombre, String fechaInicio, String fechaFin)
+	public String buscar()//String nombre, String fechaInicio, String fechaFin)
 	{
 		
 		
