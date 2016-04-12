@@ -1,13 +1,11 @@
 package es.uniovi.asw.dbManagement.model;
 
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "VotesClosedList")
-@DiscriminatorValue("voteClosedList")
 public class VoteClosedList extends Vote {
 	
 	@ManyToOne
@@ -20,11 +18,11 @@ public class VoteClosedList extends Vote {
 	}
 
 	public void setCandidature(Candidature candidature) {
-		if (candidature != null) {
+		if (this.candidature != null)
 			this.candidature._getVotes().remove(this);
 			this.candidature = candidature;
+		if (this.candidature != null)
 			this.candidature._getVotes().add(this);
-		}
 	}
 
 	@Override
@@ -37,6 +35,8 @@ public class VoteClosedList extends Vote {
 		final int prime = 31;
 		int result = super.hashCode();
 		result = prime * result + ((candidature == null) ? 0 : candidature.hashCode());
+		result = prime * result + ((getElection() == null) ? 0 : getElection().hashCode());
+		result = prime * result + ((getPollingPlace() == null) ? 0 : getPollingPlace().hashCode());
 		return result;
 	}
 
@@ -54,7 +54,19 @@ public class VoteClosedList extends Vote {
 				return false;
 		} else if (!candidature.equals(other.candidature))
 			return false;
+		if (getElection() == null) {
+			if (other.getElection() != null)
+				return false;
+		} else if (!getElection().equals(other.getElection()))
+			return false;
+		if (getPollingPlace() == null) {
+			if (other.getPollingPlace() != null)
+				return false;
+		} else if (!getPollingPlace().equals(other.getPollingPlace()))
+			return false;
 		return true;
 	}
+	
+	
 	
 }

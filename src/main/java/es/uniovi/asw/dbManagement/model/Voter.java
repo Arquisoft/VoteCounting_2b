@@ -33,7 +33,7 @@ public class Voter {
 	@OneToMany(mappedBy = "voter", fetch = FetchType.EAGER)
 	private Set<Turnout> turnout = new HashSet<>();
 	
-	protected Voter() {}
+	public Voter() {}
 
 	public Voter(String name, String nif, String email) {
 		this.name = name;
@@ -62,11 +62,11 @@ public class Voter {
 	}
 
 	public void setPollingPlace(PollingPlace pollingPlace) {
-		if (pollingPlace != null) {
+		if (this.pollingPlace != null)
 			this.pollingPlace._getVoters().remove(this);
 			this.pollingPlace = pollingPlace;
+		if (this.pollingPlace != null)
 			this.pollingPlace._getVoters().add(this);
-		}
 	}
 
 	public PollingPlace getPollingPlace() {

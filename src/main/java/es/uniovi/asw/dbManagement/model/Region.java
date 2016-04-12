@@ -3,6 +3,7 @@ package es.uniovi.asw.dbManagement.model;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -14,6 +15,7 @@ public class Region {
 
 	@Id @GeneratedValue
 	private Long id;
+	@Column(unique = true, nullable = false)
 	private String name;
 	
 	@OneToMany(mappedBy="region", fetch = FetchType.EAGER)
