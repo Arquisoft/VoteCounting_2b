@@ -1,13 +1,11 @@
 package es.uniovi.asw.dbManagement.model;
 
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "VotesOpenList")
-@DiscriminatorValue("voteOpenList")
 public class VoteOpenList extends Vote {
 	
 	@ManyToOne
@@ -20,11 +18,11 @@ public class VoteOpenList extends Vote {
 	}
 
 	public void setCandidate(Candidate candidate) {
-		if (candidate != null) {
+		if (this.candidate != null)
 			this.candidate._getVotes().remove(this);
 			this.candidate = candidate;
+		if (this.candidate != null)
 			this.candidate._getVotes().add(this);
-		}
 	}
 
 	@Override
@@ -35,8 +33,10 @@ public class VoteOpenList extends Vote {
 	@Override
 	public int hashCode() {
 		final int prime = 31;
-		int result = 1;
+		int result = super.hashCode();
 		result = prime * result + ((candidate == null) ? 0 : candidate.hashCode());
+		result = prime * result + ((getElection() == null) ? 0 : getElection().hashCode());
+		result = prime * result + ((getPollingPlace() == null) ? 0 : getPollingPlace().hashCode());
 		return result;
 	}
 
@@ -44,7 +44,7 @@ public class VoteOpenList extends Vote {
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
+		if (!super.equals(obj))
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
@@ -53,6 +53,16 @@ public class VoteOpenList extends Vote {
 			if (other.candidate != null)
 				return false;
 		} else if (!candidate.equals(other.candidate))
+			return false;
+		if (getElection() == null) {
+			if (other.getElection() != null)
+				return false;
+		} else if (!getElection().equals(other.getElection()))
+			return false;
+		if (getPollingPlace() == null) {
+			if (other.getPollingPlace() != null)
+				return false;
+		} else if (!getPollingPlace().equals(other.getPollingPlace()))
 			return false;
 		return true;
 	}

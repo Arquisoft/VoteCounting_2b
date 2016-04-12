@@ -29,11 +29,11 @@ public class PollingPlace {
 	}
 
 	public void setConstituency(Constituency constituency) {
-		if (this.constituency != null ) {
+		if (this.constituency != null)
 			this.constituency._getPollingPlaces().remove(this);
 			this.constituency = constituency;
+		if (this.constituency != null)
 			this.constituency._getPollingPlaces().add(this);
-		}
 	}
 
 	public Set<Vote> getVotes() {

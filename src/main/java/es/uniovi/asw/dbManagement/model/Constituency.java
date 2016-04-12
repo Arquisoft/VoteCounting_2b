@@ -3,6 +3,7 @@ package es.uniovi.asw.dbManagement.model;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -15,6 +16,7 @@ public class Constituency {
 
 	@Id @GeneratedValue
 	private Long id;
+	@Column(unique = true, nullable = false)
 	private String name;
 	
 	@ManyToOne
@@ -37,11 +39,11 @@ public class Constituency {
 	}
 
 	public void setRegion(Region region) {
-		if (this.region != null) {
+		if (this.region != null)
 			this.region._getConstituencies().remove(this);
 			this.region = region;
+		if (this.region != null)
 			this.region._getConstituencies().add(this);
-		}
 	}
 
 	public Set<PollingPlace> getPollingPlaces() {

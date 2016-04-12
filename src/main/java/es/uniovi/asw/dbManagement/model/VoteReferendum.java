@@ -1,12 +1,10 @@
 package es.uniovi.asw.dbManagement.model;
 
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "VotesReferendum")
-@DiscriminatorValue("voteReferendum")
 public class VoteReferendum extends Vote {
 
 	private int yeses;
