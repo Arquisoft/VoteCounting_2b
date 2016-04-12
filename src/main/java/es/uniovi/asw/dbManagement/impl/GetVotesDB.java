@@ -4,11 +4,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import es.uniovi.asw.dbManagement.GetVotes;
 import es.uniovi.asw.dbManagement.model.Election;
-import es.uniovi.asw.dbManagement.persistence.ElectionsRepository;
 
 
 public class GetVotesDB implements GetVotes
 {
+
+	@Override
+	public Election getVotes(String electionName) {
+		return null;
+	}	
+	/*
 	private final ElectionsRepository elections;
 	
 	
@@ -24,4 +29,5 @@ public class GetVotesDB implements GetVotes
 	{
 		return elections.findByName(electionName);
 	}
+	*/
 }
