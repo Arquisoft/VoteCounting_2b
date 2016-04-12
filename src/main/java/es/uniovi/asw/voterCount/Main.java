@@ -29,8 +29,10 @@ public class Main extends SpringBootServletInitializer
 	public ServletRegistrationBean facesServletRegistraiton()
 	{
 		ServletRegistrationBean registration = new ServletRegistrationBean(new FacesServlet(), "*.xhtml");
+		
 		registration.setName("Faces Servlet");
 		registration.setLoadOnStartup(1);
+		
 		return registration;
 	}
 	
@@ -42,7 +44,8 @@ public class Main extends SpringBootServletInitializer
 		{
 			servletContext.setInitParameter("com.sun.faces.forceLoadConfiguration", Boolean.TRUE.toString());
 			servletContext.setInitParameter("javax.faces.FACELETS_SKIP_COMMENTS", Boolean.TRUE.toString());
-			servletContext.setInitParameter("BootsFaces_THEME", "cerulean");
+			servletContext.setInitParameter("primefaces.THEME", "bootstrap");
+			servletContext.setInitParameter("primefaces.THEME", "cosmo");
 		};
 	}
 	
