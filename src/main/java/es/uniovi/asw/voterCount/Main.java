@@ -42,6 +42,7 @@ public class Main extends SpringBootServletInitializer
 		{
 			servletContext.setInitParameter("com.sun.faces.forceLoadConfiguration", Boolean.TRUE.toString());
 			servletContext.setInitParameter("javax.faces.FACELETS_SKIP_COMMENTS", Boolean.TRUE.toString());
+			servletContext.setInitParameter("BootsFaces_THEME", "cerulean");
 		};
 	}
 	
