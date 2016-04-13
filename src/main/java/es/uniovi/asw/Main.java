@@ -1,4 +1,4 @@
-package es.uniovi.asw.voterCount;
+package es.uniovi.asw;
 
 import javax.faces.webapp.FacesServlet;
 import org.springframework.boot.SpringApplication;
