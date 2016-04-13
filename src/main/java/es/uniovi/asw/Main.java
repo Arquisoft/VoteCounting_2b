@@ -1,4 +1,4 @@
-package es.uniovi.asw.voterCount;
+package es.uniovi.asw;
 
 import javax.faces.webapp.FacesServlet;
 import org.springframework.boot.SpringApplication;
@@ -44,7 +44,7 @@ public class Main extends SpringBootServletInitializer
 		{
 			servletContext.setInitParameter("com.sun.faces.forceLoadConfiguration", Boolean.TRUE.toString());
 			servletContext.setInitParameter("javax.faces.FACELETS_SKIP_COMMENTS", Boolean.TRUE.toString());
-			servletContext.setInitParameter("primefaces.THEME", "bootstrap");
+			//servletContext.setInitParameter("primefaces.THEME", "bootstrap");
 		};
 	}
 	
