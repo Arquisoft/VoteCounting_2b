@@ -13,9 +13,9 @@
   	<navigation-rule>
 	<from-view-id>principal.xhtml</from-view-id>
 		<navigation-case>
-			<from-action>#{BeanPrueba.buscar}</from-action>
+			<from-action>#{busqueda.buscar}</from-action>
 			<from-outcome>exito</from-outcome>
-			<to-view-id>/chart.xhtml</to-view-id>
+			<to-view-id>prueba.xhtml</to-view-id>
 			<redirect/>
 		</navigation-case>
 		

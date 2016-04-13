@@ -10,46 +10,72 @@
 </h:head>
 <h:body>
 	<h:form>
-		<h1>
-			<h:outputText value="Complete los siguientes datos"></h:outputText>
-		</h1>
-		
-		<p:panel id="panelElecciones">
-			<h:panelGrid columns="3" cellpadding="5">
-				<p:outputLabel for="nombreElecciones" value="Nombre " />
-				
-				<p:inputText id="nombreElecciones" required="true"
-							label="Nombre del proceso electoral:">
-				</p:inputText>
-				
-				<p:message for="nombreElecciones" />
-				
-				
-				<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-				<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-				
-				
-				<p:outputLabel for="fechaInicio" value="Fecha de inicio" />
-				<p:inputMask id="fechaInicio" mask="99/99/9999" required="true" label="Fecha de inicio" />
-				
-				<p:message for="fechaInicio" />
+		<b:container layout="fluid">
+			<b:panel title="Criterios de búsqueda de un proceso electoral" collapsible="false" look="primary">
+				<b:row>
+					<b:column medium-screen="2">
+						<h:outputText value="Buscar por nombre:" />
+					</b:column>
+					
+					<b:column medium-screen="4">
+						<b:inputText id="nombreProceso" placeholder="Nombre del proceso" />
+					</b:column>
+					
+					<b:column medium-screen="6">
+						<b:messages for="nombreProceso" />
+					</b:column>
+				</b:row>
 				
 				
 				<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 				<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 				
 				
-				<p:outputLabel for="fechaFin" value="Fecha de cierre" />
-				<p:inputMask id="fechaFin" mask="99/99/9999" required="true" label="Fecha de cierre" />
+				<b:row>
+					<b:column medium-screen="2">
+						<h:outputText value="Buscar por fecha de incio:" />
+					</b:column>
+					
+					<b:column medium-screen="4">
+						<p:inputMask id="fechaInicio" mask="99/99/9999" placeholder="Fecha de inicio del proceso" />
+					</b:column>
+					
+					<b:column medium-screen="6">
+						<b:messages for="fechaInicio" />
+					</b:column>
+				</b:row>
 				
-				<p:message for="fechaFin" />
-			</h:panelGrid>
-
-			<p:commandButton value="buscar" update="panelElecciones"
-				actionListener="#{BeanPrueba.buscar}"
-				icon="ui-icon-search" />
-		</p:panel>
+				
+				<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
+				<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
+				
+				
+				<b:row>
+					<b:column medium-screen="2">
+						<h:outputText value="Buscar por fecha de fin:" />
+					</b:column>
+					
+					<b:column medium-screen="4">
+						<p:inputMask id="fechaFin" mask="99/99/9999" placeholder="Fecha en la que termina el proceso" />
+					</b:column>
+					
+					<b:column  medium-screen="6">
+						<p:message for="fechaFin" />
+					</b:column>
+				</b:row>
+				
+				
+				<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
+				<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
+				
+				
+				<b:row>
+					<b:column medium-screen="2">
+						<b:commandButton value="buscar" action="#{busqueda.buscar}" look="primary" style="width:100%" />
+					</b:column>
+				</b:row>
+			</b:panel>
+		</b:container>
 	</h:form>
-	
 </h:body>
 </html>

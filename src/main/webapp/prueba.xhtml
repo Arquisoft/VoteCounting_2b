@@ -8,51 +8,53 @@
 	<title>BootsFaces Basic Page</title>
 </h:head>
 <h:body>
-<h:form id="loginForm">
-  <b:container layout="fluid">
-    <b:panel title="login screen" look="primary">
-      <b:row>
-        <b:column medium-screen="2">
-          <h:outputText value="Username:" for="username" />
-        </b:column>
-        <b:column medium-screen="4">
-          <b:inputText placeholder="Username" required="true" id="username" value="">
-            <f:facet name="prepend">
-              <b:icon name="user" />
-            </f:facet>
-          </b:inputText>
-        </b:column>
-        <b:column medium-screen="6">
-         
-        </b:column>
-      </b:row>
-      <b:row>
-        <b:column medium-screen="2">
-          <h:outputText value="Password:" />
-        </b:column>
-        <b:column medium-screen="4">
-          <b:inputSecret placeholder="Password" id="password" value="">
-            <f:facet name="prepend">
-              <b:iconAwesome name="key" />
-            </f:facet>
-          </b:inputSecret>
-        </b:column>
-        <b:column medium-screen="6">
-          
-        </b:column>
-      </b:row>
-      <b:row>
-        <b:column span="2" offset="2">
-          <b:commandButton value="login" onclick="" update="@form" look="primary"
-            style="width:100%" />
-        </b:column>
-        <b:column span="2">
-          <b:commandButton value="password forgotten" onclick="ajax:loginBean.forgotPassword()" update="@form"
-            look="danger" style="width:100%" />
-        </b:column>
-      </b:row>
-    </b:panel>
-  </b:container>
-</h:form>
+	<h:form id="loginForm">
+		<b:container layout="fluid">
+			<b:panel title="login screen" look="primary">
+				<b:row>
+					<b:column medium-screen="2">
+						<h:outputText value="Username:" for="username" />
+					</b:column>
+					<b:column medium-screen="4">
+						<b:inputText placeholder="Username" required="true" id="username"
+							value="">
+							<f:facet name="prepend">
+								<b:icon name="user" />
+							</f:facet>
+						</b:inputText>
+					</b:column>
+					<b:column medium-screen="6">
+
+					</b:column>
+				</b:row>
+				<b:row>
+					<b:column medium-screen="2">
+						<h:outputText value="Password:" />
+					</b:column>
+					<b:column medium-screen="4">
+						<b:inputSecret placeholder="Password" id="password" value="">
+							<f:facet name="prepend">
+								<b:iconAwesome name="key" />
+							</f:facet>
+						</b:inputSecret>
+					</b:column>
+					<b:column medium-screen="6">
+
+					</b:column>
+				</b:row>
+				<b:row>
+					<b:column span="2" offset="2">
+						<b:commandButton value="login" onclick="" update="@form"
+							look="primary" style="width:100%" />
+					</b:column>
+					<b:column span="2">
+						<b:commandButton value="password forgotten"
+							onclick="ajax:loginBean.forgotPassword()" update="@form"
+							look="danger" style="width:100%" />
+					</b:column>
+				</b:row>
+			</b:panel>
+		</b:container>
+	</h:form>
 </h:body>
 </html>
