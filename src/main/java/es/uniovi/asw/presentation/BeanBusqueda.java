@@ -24,21 +24,7 @@ public class BeanBusqueda
 	 * 
 	 */
 	public String buscar()
-	{
-		
-		List<Election> referendum = null;
-		/*
-		Calendar c = Calendar.getInstance();
-		
-		referendum.setName("Referendum");
-		referendum.setStartDate(c.getTime());
-		c.add(Calendar.DATE, 2);
-		referendum.setExpiryDate(c.getTime());
-		referendum.setQuestion("Question");
-		*/
-		referendum = (List<Election>) Repository.electionR.findAll();
-		
-		
+	{				
 		System.out.println("Se pasó por el bean");
 		
 		return "exito";

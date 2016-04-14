@@ -9,69 +9,81 @@
 	<title>Prueba</title>
 </h:head>
 <h:body>
+
+	<b:navBar brand="VoteCounting" inverse="true">
+		<b:navbarLinks>
+			<b:navLink value="Principal"></b:navLink>
+			<b:navLink value="Lista Elecciones" href="listaElecciones.xhtml"></b:navLink>
+			<!-- <b:navLink value="Link" href="#"></b:navLink> -->
+		</b:navbarLinks>
+	</b:navBar>
 	<h:form>
 		<b:container layout="fluid">
-			<b:panel title="Criterios de búsqueda de un proceso electoral" collapsible="false" look="primary">
+			<b:panel title="Criterios de búsqueda de un proceso electoral"
+				collapsible="false" look="primary">
 				<b:row>
 					<b:column medium-screen="2">
 						<h:outputText value="Buscar por nombre:" />
 					</b:column>
-					
+
 					<b:column medium-screen="4">
 						<b:inputText id="nombreProceso" placeholder="Nombre del proceso" />
 					</b:column>
-					
+
 					<b:column medium-screen="6">
 						<b:messages for="nombreProceso" />
 					</b:column>
 				</b:row>
-				
-				
+
+
 				<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 				<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-				
-				
+
+
 				<b:row>
 					<b:column medium-screen="2">
 						<h:outputText value="Buscar por fecha de inicio:" />
 					</b:column>
-					
+
 					<b:column medium-screen="4">
-						<p:inputMask id="fechaInicio" mask="99/99/9999" placeholder="Fecha de inicio del proceso" />
+						<p:inputMask id="fechaInicio" mask="99/99/9999"
+							placeholder="Fecha de inicio del proceso" />
 					</b:column>
-					
+
 					<b:column medium-screen="6">
 						<b:messages for="fechaInicio" />
 					</b:column>
 				</b:row>
-				
-				
+
+
 				<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 				<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-				
-				
+
+
 				<b:row>
 					<b:column medium-screen="2">
 						<h:outputText value="Buscar por fecha de fin:" />
 					</b:column>
-					
+
 					<b:column medium-screen="4">
-						<p:inputMask id="fechaFin" mask="99/99/9999" placeholder="Fecha en la que termina el proceso" />
+						<p:inputMask id="fechaFin" mask="99/99/9999"
+							placeholder="Fecha en la que termina el proceso" />
 					</b:column>
-					
-					<b:column  medium-screen="6">
+
+					<b:column medium-screen="6">
 						<p:message for="fechaFin" />
 					</b:column>
 				</b:row>
-				
-				
+
+
 				<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 				<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-				
-				
+
+
 				<b:row>
 					<b:column medium-screen="2">
-						<b:commandButton value="buscar" action="#{busqueda.buscar}" look="primary" style="width:100%" />
+						<b:commandButton value="buscar" action="#{busqueda.buscar}"
+							look="primary" style="width:100%" />
 					</b:column>
 				</b:row>
 			</b:panel>

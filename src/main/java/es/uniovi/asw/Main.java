@@ -1,6 +1,5 @@
 package es.uniovi.asw;
 
-import javax.faces.webapp.FacesServlet;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -28,9 +27,11 @@ public class Main extends SpringBootServletInitializer
 	@Bean
 	public ServletRegistrationBean facesServletRegistraiton()
 	{
-		ServletRegistrationBean registration = new ServletRegistrationBean(new FacesServlet(), "*.xhtml");
+		ServletRegistrationBean registration = new ServletRegistrationBean(new javax.faces.webapp.FacesServlet(), 
+				"*.xhtml");
 		
 		registration.setName("Faces Servlet");
+		
 		registration.setLoadOnStartup(1);
 		
 		return registration;
@@ -44,7 +45,10 @@ public class Main extends SpringBootServletInitializer
 		{
 			servletContext.setInitParameter("com.sun.faces.forceLoadConfiguration", Boolean.TRUE.toString());
 			servletContext.setInitParameter("javax.faces.FACELETS_SKIP_COMMENTS", Boolean.TRUE.toString());
-			servletContext.setInitParameter("BootsFaces_THEME", "cosmo");
+			servletContext.setInitParameter("primefaces.CLIENT_SIDE_VALIDATION", "true");
+	        servletContext.setInitParameter("javax.faces.PROJECT_STAGE", "Development");
+	        servletContext.addListener(com.sun.faces.config.ConfigureListener.class);
+			servletContext.setInitParameter("BootsFaces_THEME", "default");
 		};
 	}
 	

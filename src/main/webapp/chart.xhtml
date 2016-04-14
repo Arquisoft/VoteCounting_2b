@@ -1,14 +1,24 @@
+<?xml version='1.0' encoding='iso-8859-1' ?>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui"
 	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-	<title>Resultados electorales</title>
+	<title>Prueba</title>
 </h:head>
-<h1>
-	<h:outputText value="Elecciones 2016"></h:outputText>
-</h1>
-<p:chart type="bar" model="#{BeanChartView.barModel}"
-	style="height:300px" />
+<h:body>
+	<b:navBar brand="VoteCounting" inverse="true">
+		<b:navbarLinks>
+			<b:navLink value="Principal" href="principal.xhtml"></b:navLink>
+			<b:navLink value="Lista Elecciones" href="listaElecciones.xhtml"></b:navLink>
+			<!-- <b:navLink value="Link" href="#"></b:navLink> -->
+		</b:navbarLinks>
+	</b:navBar>
+	<b:container layout="fluid">
+		<p:chart type="pie" model="#{BeanRecuento.pieModel1}" style="width:400px;height:300px" />
+		<p:chart type="bar" model="#{BeanRecuento.barModel}" style="height:300px"/>
+	</b:container>
+</h:body>
 </html>

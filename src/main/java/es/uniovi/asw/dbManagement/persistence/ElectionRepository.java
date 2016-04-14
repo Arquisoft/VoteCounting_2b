@@ -6,5 +6,5 @@ import es.uniovi.asw.dbManagement.model.Election;
 
 
 public interface ElectionRepository extends CrudRepository<Election, Long>{
-
+	Election findById(Long id);
 }
