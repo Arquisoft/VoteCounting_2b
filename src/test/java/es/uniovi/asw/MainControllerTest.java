@@ -36,9 +36,11 @@ public class MainControllerTest {
 
   @Test
   public void testLanding() throws Exception {
-    //mvc.perform(get("/principal.xhtml")).andExpect(status().isOk()).andExpect(content().string(containsString("Criterios de búsqueda de un proceso electoral")));
+    mvc.perform(get("/principal.xhtml")).andExpect(status().isOk()).andExpect(content().string(containsString("Criterios de búsqueda de un proceso electoral")));
     mvc.perform(get("/principal.xhtml")).andExpect(status().isOk()).andExpect(content().string(containsString("Nombre")));
+    mvc.perform(get("/principal.xhtml")).andExpect(status().isOk()).andExpect(content().string(containsString("Fecha")));
     mvc.perform(get("/principal.xhtml")).andExpect(status().isOk()).andExpect(content().string(containsString("Buscar por nombre:")));
+    mvc.perform(get("/principal.xhtml")).andExpect(status().isOk()).andExpect(content().string(containsString("Buscar por fecha de inicio:")));
     mvc.perform(get("/principal.xhtml")).andExpect(status().isOk()).andExpect(content().string(containsString("Buscar por fecha de fin:")));
     mvc.perform(get("/principal.xhtml")).andExpect(status().isOk()).andExpect(content().string(containsString("buscar")));
 
