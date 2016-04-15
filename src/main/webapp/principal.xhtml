@@ -4,19 +4,15 @@
 	xmlns:b="http://bootsfaces.net/ui"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
 	<title>Prueba</title>
 </h:head>
 <h:body>
 
-	<b:navBar brand="VoteCounting" inverse="true">
-		<b:navbarLinks>
-			<b:navLink value="Principal"></b:navLink>
-			<b:navLink value="Lista Elecciones" href="listaElecciones.xhtml"></b:navLink>
-			<!-- <b:navLink value="Link" href="#"></b:navLink> -->
-		</b:navbarLinks>
-	</b:navBar>
+	<ui:include src="/snippets/navegacion.xhtml" />
+	
 	<h:form>
 		<b:container layout="fluid">
 			<b:panel title="Criterios de búsqueda de un proceso electoral"

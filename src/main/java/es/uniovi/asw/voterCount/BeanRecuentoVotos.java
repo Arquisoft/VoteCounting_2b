@@ -32,7 +32,7 @@ public class BeanRecuentoVotos {
 	public String recuentoVotos(Election e) {
 		// Election e = Repository.electionR.findById(id);
 
-		//if (e instanceof Referendum) {
+		if (e instanceof Referendum) {
 
 			HashSet<Vote> votos = (HashSet<Vote>) e.getVotes();
 
@@ -74,8 +74,8 @@ public class BeanRecuentoVotos {
 			yAxis.setMax(10);
 
 			return "exito";
-		//}
-		//return null;
+		}
+		return null;
 	}
 
 }
