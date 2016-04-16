@@ -1,41 +1,39 @@
 package es.uniovi.asw.voterCount;
 
+import java.util.HashMap;
 import java.util.HashSet;
-import org.primefaces.model.chart.Axis;
-import org.primefaces.model.chart.AxisType;
-import org.primefaces.model.chart.BarChartModel;
-import org.primefaces.model.chart.ChartSeries;
-import org.primefaces.model.chart.PieChartModel;
+import java.util.List;
+import java.util.Map;
 import org.springframework.context.annotation.Scope;
+import org.springframework.integration.leader.Candidate;
 import org.springframework.stereotype.Component;
 
+import es.uniovi.asw.dbManagement.model.Candidature;
+import es.uniovi.asw.dbManagement.model.ClosedList;
 import es.uniovi.asw.dbManagement.model.Election;
+import es.uniovi.asw.dbManagement.model.OpenList;
 import es.uniovi.asw.dbManagement.model.Referendum;
 import es.uniovi.asw.dbManagement.model.Vote;
 import es.uniovi.asw.dbManagement.model.VoteReferendum;
+import es.uniovi.asw.dbManagement.persistence.Repository;
 
 @Component("BeanRecuento")
 @Scope("session")
 public class BeanRecuentoVotos {
-
-	private PieChartModel pieModel1 = new PieChartModel();
-	private BarChartModel barModel = new BarChartModel();
-
-	public PieChartModel getPieModel1() {
-		return pieModel1;
-	}
 	
-	public BarChartModel getBarModel() {
-		return barModel;
+	private String nombreEleccion;
+	public Map<String,Integer> votosReferendum = new HashMap<>();
+	
+	public Map<String, Integer> getVotosReferendum() {
+		return votosReferendum;
 	}
 
-	public String recuentoVotos(Election e) {
-		// Election e = Repository.electionR.findById(id);
+	public void recuentoVotos(Election e) {;
 
 		if (e instanceof Referendum) {
-
+			setNombreEleccion(e.getName());
 			HashSet<Vote> votos = (HashSet<Vote>) e.getVotes();
-
+			
 			int yes = 0;
 			int no = 0;
 
@@ -44,38 +42,36 @@ public class BeanRecuentoVotos {
 				yes += vr.getYeses();
 				no += vr.getNoes();
 			}
-
-			pieModel1.set("Yes", yes);
-			pieModel1.set("No", no);
-
-			pieModel1.setTitle(e.getName());
-			pieModel1.setLegendPosition("w");
-
-			ChartSeries yesS = new ChartSeries();
-			yesS.setLabel("Yes");
-			yesS.set("Yes", yes);
-
-			ChartSeries noS = new ChartSeries();
-			noS.setLabel("No");
-			noS.set("No", no);
 			
-			barModel.clear();
-			barModel.addSeries(yesS);
-			barModel.addSeries(noS);
-
-			barModel.setTitle(e.getName());
-			barModel.setLegendPosition("ne");
-			Axis xAxis = barModel.getAxis(AxisType.X);
-			xAxis.setLabel("Options");
-
-			Axis yAxis = barModel.getAxis(AxisType.Y);
-			yAxis.setLabel("Num Votes");
-			yAxis.setMin(0);
-			yAxis.setMax(10);
-
-			return "exito";
+			votosReferendum.put("yes", yes);
+			votosReferendum.put("no", no);
 		}
-		return null;
+		
+		if (e instanceof ClosedList) {
+			setNombreEleccion(e.getName());
+			HashSet<Vote> votos = (HashSet<Vote>) e.getVotes();
+			
+			
+			List<Candidate> candidatos =  Repository.candidatureR.findByElectionsId(e.getId());
+			
+			HashMap<String, Integer> votosCerradas = new HashMap<>();
+			
+			//por cada circunscripcion y colegio
+			for(Candidate c:candidatos){
+				HashMap<Integer, Integer> votosC = new HashMap<>();
+				//Buscar votos del candidatos y almacenarlos dividiendolos por el nºescaños
+			}
+			
+			//Repartir los escaños
+		}
+	}
+
+	public String getNombreEleccion() {
+		return nombreEleccion;
+	}
+
+	public void setNombreEleccion(String nombreEleccion) {
+		this.nombreEleccion = nombreEleccion;
 	}
 
 }
