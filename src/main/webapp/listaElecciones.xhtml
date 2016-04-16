@@ -58,7 +58,9 @@
 					<h:outputText value="Consultar Resultados"/>
 				</f:facet>
 				<h:form>
-					<b:commandButton ajax="true" value="Resultados" look="primary" action="#{BeanRecuento.recuentoVotos(eleccion)}"/>
+					<b:commandButton ajax="true" value="Resultados" look="primary" 
+					actionListener="#{BeanRecuento.recuentoVotos(eleccion)}" 
+					action="#{BeanResultados.mostrarGraficos}"/>
 				</h:form>
 			</h:column>
 		</b:dataTable>

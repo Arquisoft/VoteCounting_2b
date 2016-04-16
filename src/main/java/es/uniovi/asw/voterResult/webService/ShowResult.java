@@ -1,4 +1,4 @@
-package es.uniovi.asw.voterResult;
+package es.uniovi.asw.voterResult.webService;
 
 import org.springframework.web.bind.annotation.RequestBody;
 

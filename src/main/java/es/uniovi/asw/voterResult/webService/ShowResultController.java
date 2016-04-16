@@ -6,7 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import es.uniovi.asw.voterResult.ShowResult;
 import es.uniovi.asw.voterResult.request.OpcionesMostrarResultados;
 
 

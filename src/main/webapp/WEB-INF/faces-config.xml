@@ -22,7 +22,16 @@
     <navigation-rule>
 	<from-view-id>listaElecciones.xhtml</from-view-id>
 		<navigation-case>
-			<from-action>#{BeanRecuento.recuentoVotos(eleccion)}</from-action>
+			<from-action>#{BeanResultados.mostrarGraficos}</from-action>
+			<from-outcome>exito</from-outcome>
+			<to-view-id>/chart.xhtml</to-view-id>
+			<redirect/>
+		</navigation-case>
+    </navigation-rule>	
+    <navigation-rule>
+	<from-view-id>listaReferendum.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{BeanResultados.mostrarGraficos}</from-action>
 			<from-outcome>exito</from-outcome>
 			<to-view-id>/chart.xhtml</to-view-id>
 			<redirect/>
