@@ -34,36 +34,72 @@ public class BeanMostrarResultados {
 		BeanRecuentoVotos brv = (BeanRecuentoVotos) FacesContext.getCurrentInstance().getExternalContext()
 				.getSessionMap().get("BeanRecuento");
 
-		Map<String, Integer> votos = brv.getVotosReferendum();
+		if (brv.getTipoEleccion().equals("Referendum")) {
 
-		pieModel1.set("Yes", votos.get("yes"));
-		pieModel1.set("No", votos.get("no"));
+			Map<String, Integer> votos = brv.getVotosReferendum();
 
-		pieModel1.setTitle(brv.getNombreEleccion());
-		pieModel1.setLegendPosition("w");
+			pieModel1.set("Yes", votos.get("yes"));
+			pieModel1.set("No", votos.get("no"));
 
-		ChartSeries yesS = new ChartSeries();
-		yesS.setLabel("Yes");
-		yesS.set("Yes", votos.get("yes"));
+			pieModel1.setTitle(brv.getNombreEleccion());
+			pieModel1.setLegendPosition("w");
 
-		ChartSeries noS = new ChartSeries();
-		noS.setLabel("No");
-		noS.set("No", votos.get("no"));
+			ChartSeries yesS = new ChartSeries();
+			yesS.setLabel("Yes");
+			yesS.set("Yes", votos.get("yes"));
 
-		barModel.clear();
-		barModel.addSeries(yesS);
-		barModel.addSeries(noS);
+			ChartSeries noS = new ChartSeries();
+			noS.setLabel("No");
+			noS.set("No", votos.get("no"));
 
-		barModel.setTitle(brv.getNombreEleccion());
-		barModel.setLegendPosition("ne");
-		Axis xAxis = barModel.getAxis(AxisType.X);
-		xAxis.setLabel("Options");
+			barModel.clear();
+			barModel.addSeries(yesS);
+			barModel.addSeries(noS);
 
-		Axis yAxis = barModel.getAxis(AxisType.Y);
-		yAxis.setLabel("Num Votes");
-		yAxis.setMin(0);
-		yAxis.setMax(10);
+			barModel.setTitle(brv.getNombreEleccion());
+			barModel.setLegendPosition("ne");
+			Axis xAxis = barModel.getAxis(AxisType.X);
+			xAxis.setLabel("Options");
 
+			Axis yAxis = barModel.getAxis(AxisType.Y);
+			yAxis.setLabel("Num Votes");
+			yAxis.setMin(0);
+			yAxis.setMax(10);
+		}
+		
+		if(brv.getTipoEleccion().equals("ListaCerrada")){
+			Map<String, Integer> votos = brv.votosListaCerrada;
+
+			
+			for(String key:votos.keySet()){
+				pieModel1.set(key,votos.get(key));
+			}
+			pieModel1.setTitle(brv.getNombreEleccion());
+			pieModel1.setLegendPosition("w");
+
+			int max=0;
+			
+			barModel.clear();
+			for(String key:votos.keySet()){
+				ChartSeries serie = new ChartSeries();
+				serie.setLabel(key);
+				serie.set(key, votos.get(key));
+				barModel.addSeries(serie);
+				max+=votos.get(key);
+			}
+
+			barModel.setTitle(brv.getNombreEleccion());
+			barModel.setLegendPosition("ne");
+			Axis xAxis = barModel.getAxis(AxisType.X);
+			xAxis.setLabel("Opciones");
+
+			Axis yAxis = barModel.getAxis(AxisType.Y);
+			yAxis.setLabel("Num Votes");
+			yAxis.setMin(0);
+			yAxis.setMax(max);
+			
+			barModel.setShowDatatip(false);
+		}
 		return "exito";
 	}
 }

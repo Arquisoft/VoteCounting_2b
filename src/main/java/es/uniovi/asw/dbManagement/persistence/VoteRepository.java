@@ -1,5 +1,7 @@
 package es.uniovi.asw.dbManagement.persistence;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -29,5 +31,9 @@ public interface VoteRepository extends CrudRepository<Vote, Long>{
 	@Query("SELECT v FROM VoteReferendum v WHERE v.election = :election and v.pollingPlace = :pollingPlace")
 	VoteReferendum findVoteReferendumByElectionAndPollingPlace(@Param("election") Election election,
 			@Param("pollingPlace") PollingPlace pollingPlace);
+	
+	@Query("SELECT v FROM VoteClosedList v WHERE v.election = :election and v.pollingPlace = :pollingPlace")
+	 List<VoteClosedList> findByElectionAndPollingPlace(@Param("election") Election election,
+	 			@Param("pollingPlace") PollingPlace pollingPlace);
 
 }
