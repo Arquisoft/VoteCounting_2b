@@ -19,8 +19,8 @@
 	<ui:include src="/snippets/navegacion.xhtml" />
 	
 	<b:container layout="fluid">
-		<h1 style="text-align: center">Lista de Elecciones</h1>
-		<b:dataTable value="#{BeanListaElecciones.elecciones}" var="eleccion"
+		<h1 style="text-align: center">Lista de Referendums</h1>
+		<b:dataTable value="#{BeanListaElecciones.listasCerradas}" var="eleccion"
 			id="bElection" styleClass="table table-striped table-bordered"
 			style="width:100%">
 			<h:column>
@@ -58,9 +58,9 @@
 					<h:outputText value="Consultar Resultados"/>
 				</f:facet>
 				<h:form>
-					<b:commandButton ajax="true" value="Resultados" look="primary" 
-					actionListener="#{BeanRecuento.recuentoVotos(eleccion)}" 
-					action="#{BeanResultados.mostrarGraficos}"/>
+					<b:commandButton ajax="true" value="Resultados" look="primary"
+					 actionListener="#{BeanRecuento.recuentoVotos(eleccion)}" 
+					 action="#{BeanResultados.mostrarGraficos}"/>
 				</h:form>
 			</h:column>
 		</b:dataTable>

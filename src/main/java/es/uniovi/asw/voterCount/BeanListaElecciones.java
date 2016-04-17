@@ -28,9 +28,13 @@ public class BeanListaElecciones {
 		this.elecciones = (List<Election>) Repository.electionR.findAll();
 		
 		referendums = new LinkedList<>();
+		listasCerradas= new LinkedList<>();
 		for(Election e:elecciones){
 			if(e instanceof Referendum){
 				referendums.add((Referendum) e);
+			}
+			if(e instanceof ClosedList){
+				listasCerradas.add((ClosedList) e);
 			}
 		}
 		System.out.println("BeanListaElecciones creado");

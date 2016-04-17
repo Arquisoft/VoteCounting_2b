@@ -6,13 +6,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import org.springframework.context.annotation.Scope;
-import org.springframework.integration.leader.Candidate;
 import org.springframework.stereotype.Component;
-
-import ch.qos.logback.core.net.SyslogOutputStream;
-import es.uniovi.asw.dbManagement.model.Candidature;
 import es.uniovi.asw.dbManagement.model.ClosedList;
-import es.uniovi.asw.dbManagement.model.Constituency;
 import es.uniovi.asw.dbManagement.model.Election;
 import es.uniovi.asw.dbManagement.model.OpenList;
 import es.uniovi.asw.dbManagement.model.PollingPlace;
@@ -101,6 +96,11 @@ public class BeanRecuentoVotos {
 			}
 			System.out.println("Repartos de escaños realizados");
 			votosListaCerrada=escañosPartidos;
+		}
+		
+		if (e instanceof OpenList) {
+			setTipoEleccion("ListaAbierta");
+			setNombreEleccion(e.getName());
 		}
 	}
 

@@ -38,10 +38,12 @@ public class BeanMostrarResultados {
 
 			Map<String, Integer> votos = brv.getVotosReferendum();
 
+
+			pieModel1.clear();
 			pieModel1.set("Yes", votos.get("yes"));
 			pieModel1.set("No", votos.get("no"));
 
-			pieModel1.setTitle(brv.getNombreEleccion());
+			//pieModel1.setTitle(brv.getNombreEleccion());
 			pieModel1.setLegendPosition("w");
 
 			ChartSeries yesS = new ChartSeries();
@@ -56,7 +58,7 @@ public class BeanMostrarResultados {
 			barModel.addSeries(yesS);
 			barModel.addSeries(noS);
 
-			barModel.setTitle(brv.getNombreEleccion());
+			//barModel.setTitle(brv.getNombreEleccion());
 			barModel.setLegendPosition("ne");
 			Axis xAxis = barModel.getAxis(AxisType.X);
 			xAxis.setLabel("Options");
@@ -70,28 +72,28 @@ public class BeanMostrarResultados {
 		if(brv.getTipoEleccion().equals("ListaCerrada")){
 			Map<String, Integer> votos = brv.votosListaCerrada;
 
-			
+			pieModel1.clear();
 			for(String key:votos.keySet()){
 				pieModel1.set(key,votos.get(key));
 			}
-			pieModel1.setTitle(brv.getNombreEleccion());
+			//pieModel1.setTitle(brv.getNombreEleccion());
 			pieModel1.setLegendPosition("w");
 
 			int max=0;
 			
 			barModel.clear();
+			
 			for(String key:votos.keySet()){
 				ChartSeries serie = new ChartSeries();
 				serie.setLabel(key);
-				serie.set(key, votos.get(key));
+				serie.set(" ", votos.get(key));
 				barModel.addSeries(serie);
 				max+=votos.get(key);
 			}
 
-			barModel.setTitle(brv.getNombreEleccion());
+			//barModel.setTitle(brv.getNombreEleccion());
 			barModel.setLegendPosition("ne");
 			Axis xAxis = barModel.getAxis(AxisType.X);
-			xAxis.setLabel("Opciones");
 
 			Axis yAxis = barModel.getAxis(AxisType.Y);
 			yAxis.setLabel("Num Votes");
