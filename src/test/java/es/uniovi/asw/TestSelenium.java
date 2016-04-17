@@ -23,7 +23,7 @@ public class TestSelenium {
   }
 
   @Test
-  public void testSelenium() throws Exception {
+  public void testSeleniumPrincipal() throws Exception {
     driver.get(baseUrl + "/principal.xhtml");
     assertEquals("Buscar por nombre:", driver.findElement(By.id("j_idt13:j_idt17")).getText());
     assertEquals("Buscar por fecha de inicio:", driver.findElement(By.id("j_idt13:j_idt23")).getText());
@@ -31,6 +31,22 @@ public class TestSelenium {
     assertEquals("Criterios de búsqueda de un proceso electoral", driver.findElement(By.cssSelector("h4.panel-title")).getText());
     // ERROR: Caught exception [Error: locator strategy either id or name must be specified explicitly.]
     driver.findElement(By.id("j_idt13:j_idt36")).click();
+  }
+  
+  @Test
+  public void testSeleniumReferencias() throws Exception {
+    driver.get(baseUrl + "/principal.xhtml");
+    driver.findElement(By.id("j_idt7")).click();
+    driver.findElement(By.id("j_idt8")).click();
+    driver.get(baseUrl + "/principal.xhtml");
+    driver.findElement(By.id("dtLj_idt9")).click();
+    driver.findElement(By.id("j_idt10")).click();
+    driver.get(baseUrl + "/principal.xhtml");
+    driver.findElement(By.id("dtLj_idt9")).click();
+    driver.findElement(By.id("j_idt11")).click();
+    driver.get(baseUrl + "/principal.xhtml");
+    driver.findElement(By.id("dtLj_idt9")).click();
+    driver.findElement(By.id("j_idt12")).click();
   }
 
   @After
