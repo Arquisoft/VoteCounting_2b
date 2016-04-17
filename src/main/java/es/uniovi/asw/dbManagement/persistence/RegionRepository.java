@@ -6,4 +6,6 @@ import es.uniovi.asw.dbManagement.model.Region;
 
 public interface RegionRepository extends CrudRepository<Region, Long>{
 
+	Region findByName(String name);
+
 }

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import es.uniovi.asw.dbManagement.model.Candidature;
 import es.uniovi.asw.dbManagement.model.ClosedList;
+import es.uniovi.asw.dbManagement.model.Constituency;
 import es.uniovi.asw.dbManagement.model.Election;
 import es.uniovi.asw.dbManagement.model.OpenList;
 import es.uniovi.asw.dbManagement.model.Referendum;
@@ -56,6 +57,7 @@ public class BeanRecuentoVotos {
 			
 			HashMap<String, Integer> votosCerradas = new HashMap<>();
 			
+		
 			//por cada circunscripcion y colegio
 			for(Candidate c:candidatos){
 				HashMap<Integer, Integer> votosC = new HashMap<>();

@@ -6,4 +6,6 @@ import es.uniovi.asw.dbManagement.model.Constituency;
 
 public interface ConstituencyRepository extends CrudRepository<Constituency, Long>{
 
+	Constituency findByName(String name);
+
 }
