@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import es.uniovi.asw.infrastructure.ParamsManager;
+import javassist.tools.framedump;
 import scala.annotation.meta.param;
 
 
@@ -37,30 +38,73 @@ public class BeanBusqueda
 	{		
 		String criteriosBusqueda = evaluarParametrosBusqueda();
 		
+		if (criteriosBusqueda.equals("fracaso"))
+		{
+			return "fracaso";
+		}
+		
+		switch (criteriosBusqueda)
+		{
+			case "nom":
+				
+				break;
+				
+			case "nom ini ":
+				
+				break;
+				
+			case "nom ini fin":
+				
+				break;
+				
+			case "ini fin":
+				
+				break;
+				
+			case "nom fin":
+				
+				break;
+				
+			default: // fin
+				break;
+		}
+		
 		return "exito";
 	}
 	
 	
 	private String evaluarParametrosBusqueda()
 	{
-		/*
+		String criterios = "";
 		
-		if()
+		if(!ParamsManager.areParamsNull(nombreProceso))
 		{
-			
+			criterios += "nom ";
 		}
 		
-		if()
+		if(!ParamsManager.areParamsNull(fechaInicioProceso))
 		{
-			
+			criterios += "ini ";
 		}
 		
-		if()
+		if(!ParamsManager.areParamsNull(fechaFinProceso))
 		{
-			
+			criterios += "fin";
 		}
-		*/
-		return "";
+		
+		if(criterios.equals(""))
+		{
+			// Poner un mensaje que indique si no hay ningun parámetro de búsqueda válido
+			//
+			//
+			// Con está implementación no se comprueb en el servidor que el usuario se
+			// equivocó al escribir un parámetro. Si tiene un valor inválido o no se indicó
+			// tendrá el valor null
+			//
+			return "fracaso";
+		}
+		
+		return criterios;
 	}
 	
 	
@@ -76,7 +120,15 @@ public class BeanBusqueda
 	
 	public void setNombreProceso(String nombreProceso)
 	{
-		this.nombreProceso = nombreProceso;
+		if (nombreProceso == "" || nombreProceso == null)
+		{
+			this.nombreProceso = null;
+		}
+		
+		else
+		{
+			this.nombreProceso = nombreProceso;
+		}
 	}
 	
 	
