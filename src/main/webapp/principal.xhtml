@@ -10,7 +10,7 @@
 	<title>Prueba</title>
 </h:head>
 <h:body>
-
+	
 	<ui:include src="/snippets/navegacion.xhtml" />
 	
 	<h:form>
@@ -21,51 +21,53 @@
 					<b:column medium-screen="2">
 						<h:outputText value="Buscar por nombre:" />
 					</b:column>
-
+					
 					<b:column medium-screen="4">
-						<b:inputText id="nombreProceso" placeholder="Nombre del proceso" />
+						<b:inputText id="nombreProceso" placeholder="Nombre del proceso" value="#{busqueda.nombreProceso}"/>
 					</b:column>
-
+					
 					<b:column medium-screen="6">
 						<b:messages for="nombreProceso" />
 					</b:column>
 				</b:row>
-
-
+				
+				
 				<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 				<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-
-
+				
+				
 				<b:row>
 					<b:column medium-screen="2">
 						<h:outputText value="Buscar por fecha de inicio:" />
 					</b:column>
-
+					
 					<b:column medium-screen="4">
 						<b:datepicker id="fechaInicio" mode="toggle-icon"
-							placeholder="Fecha de inicio del proceso" />
+							placeholder="Fecha de inicio del proceso"
+							value="#{busqueda.fechaInicioProceso}"/>
 					</b:column>
-
+					
 					<b:column medium-screen="6">
 						<b:messages for="fechaInicio" />
 					</b:column>
 				</b:row>
-
-
+				
+				
 				<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 				<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-
-
+				
+				
 				<b:row>
 					<b:column medium-screen="2">
 						<h:outputText value="Buscar por fecha de fin:" />
 					</b:column>
-
+					
 					<b:column medium-screen="4">
 						<b:datepicker id="fechaFin" mode="toggle-icon"
-							placeholder="Fecha en la que termina el proceso" />
+							placeholder="Fecha en la que termina el proceso"
+							value="#{busqueda.fechaFinProceso}"/>
 					</b:column>
-
+					
 					<b:column medium-screen="6">
 						<p:message for="fechaFin" />
 					</b:column>
