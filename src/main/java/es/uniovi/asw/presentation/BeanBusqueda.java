@@ -1,15 +1,11 @@
 package es.uniovi.asw.presentation;
 
 import java.util.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import es.uniovi.asw.infrastructure.ParamsManager;
-import javassist.tools.framedump;
-import scala.annotation.meta.param;
 
 
 @Component("busqueda")
