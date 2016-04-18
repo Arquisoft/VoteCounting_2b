@@ -1,7 +1,8 @@
 package es.uniovi.asw.dbManagement.persistence;
 
-public class Repository {
-	
+
+public class Repository
+{
 	 public static CandidateRepository candidateR;
 	 public static CandidatureRepository candidatureR;
 	 public static ConstituencyRepository constituencyR;
