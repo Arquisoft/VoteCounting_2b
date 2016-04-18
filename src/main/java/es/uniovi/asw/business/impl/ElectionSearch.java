@@ -11,7 +11,7 @@ import es.uniovi.asw.dbManagement.persistence.Repository;
 public class ElectionSearch implements ElectionsSearch
 {
 	@Override
-	public List<Election> findByName(String name)
+	public Election findByName(String name)
 	{
 		return Repository.electionR.findByName(name);
 	}

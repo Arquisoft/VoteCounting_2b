@@ -8,7 +8,7 @@ import es.uniovi.asw.dbManagement.model.Election;
 
 public interface ElectionsSearch
 {
-	List<Election> findByName(String name);
+	Election findByName(String name);
 	List<Election> findByStartDate(Date startName);
 	List<Election> findByExpiryDate(Date expiryDate);
 	

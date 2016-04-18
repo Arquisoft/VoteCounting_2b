@@ -13,7 +13,7 @@ public interface ElectionRepository extends CrudRepository<Election, Long>
 {	
 	Election findById(Long id);
 	
-	List<Election> findByName(String name);
+	Election findByName(String name);
 	List<Election> findByStartDate(Date startName);
 	List<Election> findByExpiryDate(Date expiryDate);
 	
