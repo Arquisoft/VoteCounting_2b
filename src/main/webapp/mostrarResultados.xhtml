@@ -11,19 +11,42 @@
 </h:head>
 <h:body>
 	<ui:include src="/snippets/navegacion.xhtml" />
-	<h1 style="text-align: center"><h:outputText value="#{BeanRecuento.nombreEleccion}" /></h1>
+	<h1 style="text-align: center">
+		<h:outputText value="#{BeanRecuento.nombreEleccion}" />
+	</h1>
+	<br></br>
 	<b:container layout="fluid">
-	<b:row>
-		<b:column span="6">
-			<p:chart type="pie" model="#{BeanResultados.pieModel1}" style="width:400px;height:300px" />
-		</b:column>
-	</b:row>
-	<b:row>
-		<b:column span="8">
-			<p:chart type="bar" model="#{BeanResultados.barModel}" style="width:400px;height:300px"/>
-		</b:column>
-	</b:row>
+		<b:row>
+			<b:column span="6">
+				<p:chart type="pie" model="#{BeanResultados.pieModel1}"
+					style="width:400px;height:300px" />
+			</b:column>
+			<b:column span="6">
+				<b:dataTable value="#{BeanRecuento.actual.entrySet().toArray()}" var="entry" id="bcarPool"
+					styleClass="table table-striped table-bordered" style="width:100%">
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Opciones" />
+						</f:facet>
+						<h:outputText value="#{entry.key}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Num Votos" />
+						</f:facet>
+						<h:outputText value="#{entry.value}" />
+					</h:column>
+
+				</b:dataTable>
+			</b:column>
+		</b:row>
+		<b:row>
+			<b:column span="8">
+				<p:chart type="bar" model="#{BeanResultados.barModel}"
+					style="width:400px;height:300px" />
+			</b:column>
+		</b:row>
 	</b:container>
-	
+
 </h:body>
 </html>

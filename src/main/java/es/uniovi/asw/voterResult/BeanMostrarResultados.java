@@ -30,14 +30,15 @@ public class BeanMostrarResultados {
 	}
 
 	public String mostrarGraficos() {
+		
 
 		BeanRecuentoVotos brv = (BeanRecuentoVotos) FacesContext.getCurrentInstance().getExternalContext()
 				.getSessionMap().get("BeanRecuento");
 
 		if (brv.getTipoEleccion().equals("Referendum")) {
 
-			Map<String, Integer> votos = brv.getVotosReferendum();
-
+			Map<String, Integer> votos = brv.votosReferendum;
+			
 
 			pieModel1.clear();
 			pieModel1.set("Yes", votos.get("yes"));
@@ -94,8 +95,42 @@ public class BeanMostrarResultados {
 			//barModel.setTitle(brv.getNombreEleccion());
 			barModel.setLegendPosition("ne");
 			Axis xAxis = barModel.getAxis(AxisType.X);
-
+			xAxis.setLabel("");
 			Axis yAxis = barModel.getAxis(AxisType.Y);
+			yAxis.setLabel("Num Votes");
+			yAxis.setMin(0);
+			yAxis.setMax(max);
+			
+			barModel.setShowDatatip(false);
+		}
+		
+		if(brv.getTipoEleccion().equals("ListaAbierta")){
+			Map<String, Integer> votos = brv.votosListaAbierta;
+
+			pieModel1.clear();
+			for(String key:votos.keySet()){
+				pieModel1.set(key,votos.get(key));
+			}
+			
+			pieModel1.setLegendPosition("w");
+
+			int max=0;
+			
+			barModel.clear();
+			
+			for(String key:votos.keySet()){
+				ChartSeries serie = new ChartSeries();
+				serie.setLabel(key);
+				serie.set(" ", votos.get(key));
+				barModel.addSeries(serie);
+				max+=votos.get(key);
+			}
+
+			barModel.setLegendPosition("ne");
+			
+			Axis xAxis = barModel.getAxis(AxisType.X);
+			Axis yAxis = barModel.getAxis(AxisType.Y);
+			xAxis.setLabel("");
 			yAxis.setLabel("Num Votes");
 			yAxis.setMin(0);
 			yAxis.setMax(max);

@@ -29,6 +29,7 @@ public class BeanListaElecciones {
 		
 		referendums = new LinkedList<>();
 		listasCerradas= new LinkedList<>();
+		listasAbiertas= new LinkedList<>();
 		for(Election e:elecciones){
 			if(e instanceof Referendum){
 				referendums.add((Referendum) e);
@@ -36,6 +37,8 @@ public class BeanListaElecciones {
 			if(e instanceof ClosedList){
 				listasCerradas.add((ClosedList) e);
 			}
+			if(e instanceof OpenList)
+				listasAbiertas.add((OpenList) e);
 		}
 		System.out.println("BeanListaElecciones creado");
 	}
