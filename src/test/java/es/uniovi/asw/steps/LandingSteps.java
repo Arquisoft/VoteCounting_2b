@@ -69,30 +69,110 @@ public class LandingSteps {
   }
   
   //Scenario 2
-  
   @Given("^the client write in the option1 the name")
   public void the_client_write_in_the_option1() {
-  	
+	  
+  }
+  @When("^the client click in search button to execute the search by name")
+  public void the_client_click_in_search_button_name(){
+   
   }
   
+  @Then("^search by name should be successful")
+  public void search_should_be_successful_name(){
+   
+  }
+  
+  //Scenario 3
   @Given("^the client write in the option2 the open date")
   public void the_client_write_in_the_option2() {
   	
   }
+  @When("^the client click in search button to execute the search by open date")
+  public void the_client_click_in_search_button_open_date(){
+   
+  }
   
+  @Then("^search by open date should be successful")
+  public void search_should_be_successful_open_date(){
+   
+  }
+  
+  //Scenario 4
   @Given("^the client write in the option3 the close date")
   public void the_client_write_in_the_option3() {
   	
   }
   
-  @When("^the client click in search button")
-  public void the_client_click_in_search_button(){
+  @When("^the client click in search button to execute the search by close date")
+  public void the_client_click_in_search_button_close_date(){
    
   }
   
-  @Then("^search should be successful")
-  public void search_should_be_successful(){
+  @Then("^search by close date should be successful")
+  public void search_should_be_successful_close_date(){
    
   }
   
+  //Scenario 5
+  @When("^the client click on the link \"([^\"]*)\"$")
+  public void the_client_click_on_the_link(String str) throws Throwable {
+	  System.out.println("the client click on the link "+str);
+  }
+
+  @Then("^the client makes call to Lista de Elecciones GET /listaElecciones\\.xhtml$$")
+  public void the_client_makes_call_to_Lista_de_Elecciones_GET() throws Throwable {
+	  Assert.notNull(context);
+	  this.mvc = MockMvcBuilders.webAppContextSetup(context).build();
+	  result = mvc.perform(get("/listaElecciones.xhtml")).andReturn();
+  }
+  
+  @Then("^the client receives Lista de Elecciones status code of (\\d+)$")
+  public void the_client_receives_Lista_de_Elecciones_status_code_of(int stat) throws Throwable {
+	  assertThat(result.getResponse().getStatus(), is(stat));
+  }
+  
+  //Scenario 6
+  @When("^the client choose \"([^\"]*)\"$")
+  public void the_client_choose(String str) throws Throwable {
+	 System.out.println("the client choose "+str);
+  }
+
+  @Then("^the client makes call to Referendum GET /listaReferendum\\.xhtml$$")
+  public void the_client_makes_call_to_Referendum_GET() throws Throwable {
+	  Assert.notNull(context);
+	  this.mvc = MockMvcBuilders.webAppContextSetup(context).build();
+	  result = mvc.perform(get("/listaReferendum.xhtml")).andReturn();
+  }
+  
+  @Then("^the client receives Referendum status code of (\\d+)$")
+  public void the_client_receives_Referendum_status_code_of(int stat) throws Throwable {
+	  assertThat(result.getResponse().getStatus(), is(stat));
+  }
+  
+  //Scenario 7
+  @Then("^the client makes call to Listas Cerradas GET /listaCerradas\\.xhtml$$")
+  public void the_client_makes_call_to_Listas_Cerradas_GET() throws Throwable {
+	  Assert.notNull(context);
+	  this.mvc = MockMvcBuilders.webAppContextSetup(context).build();
+	  result = mvc.perform(get("/listaCerradas.xhtml")).andReturn();
+  }
+  
+  @Then("^the client receives Listas Cerradas status code of (\\d+)$")
+  public void the_client_receives_Listas_Cerradas_status_code_of(int stat) throws Throwable {
+	  assertThat(result.getResponse().getStatus(), is(stat));
+  }
+  
+  //Scenario 8
+  @Then("^the client makes call to Listas Abiertas GET /listaAbiertas\\.xhtml$$")
+  public void the_client_makes_call_to_Listas_Abiertas_GET() throws Throwable {
+	  Assert.notNull(context);
+	  this.mvc = MockMvcBuilders.webAppContextSetup(context).build();
+	  result = mvc.perform(get("/listaAbiertas.xhtml")).andReturn();
+  }
+  //De momento se comprueba en el landing que devuelve 404
+  @Then("^the client receives Listas Abiertas status code of (\\d+)$")
+  public void the_client_receives_Listas_Abiertas_status_code_of(int stat) throws Throwable {
+	  assertThat(result.getResponse().getStatus(), is(stat));
+  }
 }
