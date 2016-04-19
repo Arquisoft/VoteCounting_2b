@@ -5,6 +5,7 @@ import java.util.Date;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import es.uniovi.asw.dbManagement.persistence.Repository;
 import es.uniovi.asw.infrastructure.ParamsManager;
 
 
@@ -39,10 +40,13 @@ public class BeanBusqueda
 			return "fracaso";
 		}
 		
+		/*
+		 * nom = nombreProceso,  ini = fechaInicio,  fin = fechaFin
+		 */
 		switch (criteriosBusqueda)
 		{
 			case "nom":
-				
+				Repository.electionR.findByNameContaining(nombreProceso);
 				break;
 				
 			case "nom ini ":
@@ -62,6 +66,7 @@ public class BeanBusqueda
 				break;
 				
 			default: // fin
+				Repository.electionR.findByStartDate(startName);
 				break;
 		}
 		
@@ -93,9 +98,9 @@ public class BeanBusqueda
 			// Poner un mensaje que indique si no hay ningun parámetro de búsqueda válido
 			//
 			//
-			// Con está implementación no se comprueb en el servidor que el usuario se
+			// Con está implementación no se comprueba en el servidor que el usuario se
 			// equivocó al escribir un parámetro. Si tiene un valor inválido o no se indicó
-			// tendrá el valor null
+			// tendrá el valor null; es decir, se interpreta que está sin indicar
 			//
 			return "fracaso";
 		}

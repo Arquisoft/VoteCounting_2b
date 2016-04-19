@@ -14,36 +14,48 @@ import es.uniovi.asw.dbManagement.model.OpenList;
 import es.uniovi.asw.dbManagement.model.Referendum;
 import es.uniovi.asw.dbManagement.persistence.Repository;
 
+
 @Component("BeanListaElecciones")
 @Scope("request")
-public class BeanListaElecciones {
-
+public class BeanListaElecciones
+{
 	public List<Election> elecciones;
 	public List<Referendum> referendums;
 	public List<OpenList> listasAbiertas;
 	public List<ClosedList> listasCerradas;
-
+	
+	
 	@PostConstruct
-	public void init() {
+	public void init()
+	{
 		this.elecciones = (List<Election>) Repository.electionR.findAll();
 		
 		referendums = new LinkedList<>();
 		listasCerradas= new LinkedList<>();
 		listasAbiertas= new LinkedList<>();
-		for(Election e:elecciones){
-			if(e instanceof Referendum){
+		
+		for(Election e:elecciones)
+		{
+			if(e instanceof Referendum)
+			{
 				referendums.add((Referendum) e);
 			}
-			if(e instanceof ClosedList){
+			
+			if(e instanceof ClosedList)
+			{
 				listasCerradas.add((ClosedList) e);
 			}
+			
 			if(e instanceof OpenList)
 				listasAbiertas.add((OpenList) e);
 		}
+		
 		System.out.println("BeanListaElecciones creado");
 	}
-
-	public List<Election> getElecciones() {
+	
+	
+	public List<Election> getElecciones()
+	{
 		return elecciones;
 	}
 
@@ -74,6 +86,4 @@ public class BeanListaElecciones {
 	public void setListasCerradas(List<ClosedList> listasCerradas) {
 		this.listasCerradas = listasCerradas;
 	}
-
-	
 }
