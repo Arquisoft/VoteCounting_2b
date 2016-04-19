@@ -10,6 +10,7 @@ Vote Counting
 [![codecov.io](https://codecov.io/github/Arquisoft/VoteCounting_2b/coverage.svg?branch=master)](https://codecov.io/github/Arquisoft/VoteCounting_2b?branch=master)
 [![Coverage Status](https://coveralls.io/repos/github/Arquisoft/VoteCounting_2b/badge.svg?branch=master)](https://coveralls.io/github/Arquisoft/VoteCounting_2b?branch=master)
 [![Dependency Status](https://www.versioneye.com/user/projects/5715f3bffcd19a0039f175bd/badge.svg?style=flat)](https://www.versioneye.com/user/projects/5715f3bffcd19a0039f175bd)
+[![ViewOnHeroku](https://img.shields.io/badge/View%20on-Heroku-ff69b4.svg)](http://vote-counting-2b.herokuapp.com)
 
 ¿En qué consiste?
 =================
