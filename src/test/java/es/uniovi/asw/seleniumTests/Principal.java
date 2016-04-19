@@ -1,4 +1,4 @@
-package es.uniovi.asw;
+package es.uniovi.asw.seleniumTests;
 
 import java.util.regex.Pattern;
 import java.util.concurrent.TimeUnit;
@@ -9,7 +9,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 
-public class TestSelenium {
+public class Principal {
   private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
@@ -18,18 +18,22 @@ public class TestSelenium {
   @Before
   public void setUp() throws Exception {
     driver = new FirefoxDriver();
-    baseUrl = "http://localhost:8080";
+    baseUrl = "http://localhost:8080/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
   @Test
-  public void testSeleniumPrincipal() throws Exception {
+  public void testPrincipal() throws Exception {
+    driver.get(baseUrl + "/principal.xhtml");
+    driver.findElement(By.linkText("Principal")).click();
+  }
+  @Test
+  public void testSeleniumPrincipalTitulos() throws Exception {
     driver.get(baseUrl + "/principal.xhtml");
     assertEquals("Buscar por nombre:", driver.findElement(By.id("j_idt13:j_idt17")).getText());
     assertEquals("Buscar por fecha de inicio:", driver.findElement(By.id("j_idt13:j_idt23")).getText());
     assertEquals("Buscar por fecha de fin:", driver.findElement(By.id("j_idt13:j_idt29")).getText());
     assertEquals("Criterios de búsqueda de un proceso electoral", driver.findElement(By.cssSelector("h4.panel-title")).getText());
-    // ERROR: Caught exception [Error: locator strategy either id or name must be specified explicitly.]
     driver.findElement(By.id("j_idt13:j_idt36")).click();
   }
   
