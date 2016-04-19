@@ -9,6 +9,7 @@ Vote Counting
 [![Codacy Badge](https://api.codacy.com/project/badge/grade/9ccbfc27845d4fe8bd0ba6c866a82730)](https://www.codacy.com/app/jelabra/VoteCounting_2b)
 [![codecov.io](https://codecov.io/github/Arquisoft/VoteCounting_2b/coverage.svg?branch=master)](https://codecov.io/github/Arquisoft/VoteCounting_2b?branch=master)
 [![Coverage Status](https://coveralls.io/repos/github/Arquisoft/VoteCounting_2b/badge.svg?branch=master)](https://coveralls.io/github/Arquisoft/VoteCounting_2b?branch=master)
+[![Dependency Status](https://www.versioneye.com/user/projects/5715f3bffcd19a0039f175bd/badge.svg?style=flat)](https://www.versioneye.com/user/projects/5715f3bffcd19a0039f175bd)
 
 ¿En qué consiste?
 =================
