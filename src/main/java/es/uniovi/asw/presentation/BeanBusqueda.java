@@ -1,10 +1,13 @@
 package es.uniovi.asw.presentation;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import es.uniovi.asw.dbManagement.model.Election;
 import es.uniovi.asw.dbManagement.persistence.Repository;
 import es.uniovi.asw.infrastructure.ParamsManager;
 
@@ -13,9 +16,21 @@ import es.uniovi.asw.infrastructure.ParamsManager;
 @Scope("request")
 public class BeanBusqueda
 {
+	private List<Election> eleccionesEncontradas;
+	
 	// formato usado en las fechas
 	private final String formatoFechas = "dd/MM/yyyy";
 	
+	/*
+	 * Criterios de búsqueda
+	 * 
+	 * En esta versión se supone que el escribió correctamente los datos de
+	 * búsqueda. Si hay alguno incorrecto, se supone que ese campo estaba
+	 * en blanco
+	 * 
+	 * Habrá que corregirlo para que muertre un error al usuario
+	 * 
+	 */
 	private String nombreProceso;
 	private Date fechaInicioProceso;
 	private Date fechaFinProceso;
@@ -45,32 +60,34 @@ public class BeanBusqueda
 		 */
 		switch (criteriosBusqueda)
 		{
-			case "nom":
-				Repository.electionR.findByNameContaining(nombreProceso);
+			case "nom ":
+				//eleccionesEncontradas = Repository.electionR.findByNameContaining(nombreProceso);
+				eleccionesEncontradas = new ArrayList<Election>();
+				eleccionesEncontradas.add( Repository.electionR.findByName("Independencia Cataluña") );
 				break;
 				
 			case "nom ini ":
-				Repository.electionR.findByNameContainingAndStartDate(nombreProceso, fechaInicioProceso);
+				eleccionesEncontradas = Repository.electionR.findByNameContainingAndStartDate(nombreProceso, fechaInicioProceso);
 				break;
 				
 			case "nom ini fin":
-				Repository.electionR.findByNameContainingAndStartDateAndExpiryDate(nombreProceso, fechaInicioProceso, fechaFinProceso);
+				eleccionesEncontradas = Repository.electionR.findByNameContainingAndStartDateAndExpiryDate(nombreProceso, fechaInicioProceso, fechaFinProceso);
 				break;
 				
-			case "ini":
-				Repository.electionR.findByStartDate(fechaInicioProceso);
+			case "ini ":
+				eleccionesEncontradas = Repository.electionR.findByStartDate(fechaInicioProceso);
 				break;
 				
 			case "ini fin":
-				Repository.electionR.findByStartDateAndExpiryDate(fechaInicioProceso, fechaFinProceso);
+				eleccionesEncontradas = Repository.electionR.findByStartDateAndExpiryDate(fechaInicioProceso, fechaFinProceso);
 				break;
 				
 			case "nom fin":
-				Repository.electionR.findByNameContainingAndStartDateAndExpiryDate(nombreProceso, fechaInicioProceso, fechaFinProceso);
+				eleccionesEncontradas = Repository.electionR.findByNameContainingAndStartDateAndExpiryDate(nombreProceso, fechaInicioProceso, fechaFinProceso);
 				break;
 				
 			default: // fin
-				Repository.electionR.findByExpiryDate(fechaFinProceso);
+				eleccionesEncontradas = Repository.electionR.findByExpiryDate(fechaFinProceso);
 				break;
 		}
 		
@@ -99,13 +116,6 @@ public class BeanBusqueda
 		
 		if(criterios.equals(""))
 		{
-			// Poner un mensaje que indique si no hay ningun parámetro de búsqueda válido
-			//
-			//
-			// Con está implementación no se comprueba en el servidor que el usuario se
-			// equivocó al escribir un parámetro. Si tiene un valor inválido o no se indicó
-			// tendrá el valor null; es decir, se interpreta que está sin indicar
-			//
 			return "fracaso";
 		}
 		
@@ -156,5 +166,16 @@ public class BeanBusqueda
 	public void setFechaFinProceso(String fechaFinProceso)
 	{
 		this.fechaFinProceso = ParamsManager.parseStringToDate(formatoFechas, fechaFinProceso);
+	}
+	
+	
+	public List<Election> getEleccionesEncontradas()
+	{
+		return eleccionesEncontradas;
+	}
+	
+	public void setEleccionesEncontradas(List<Election> eleccionesEncontradas)
+	{
+		this.eleccionesEncontradas = eleccionesEncontradas;
 	}
 }

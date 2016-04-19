@@ -1,59 +1,73 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <faces-config xmlns="http://java.sun.com/xml/ns/javaee"
-		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_2.xsd"
-		version="2.2">
-
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_2.xsd"
+	version="2.2">
+	
 	<application>
 		<el-resolver>
-    		    org.springframework.web.jsf.el.SpringBeanFacesELResolver
+			org.springframework.web.jsf.el.SpringBeanFacesELResolver
 		</el-resolver>
-  	</application>
-  	
-  	<navigation-rule>
-	<from-view-id>principal.xhtml</from-view-id>
+	</application>
+	
+	<navigation-rule>
+		<from-view-id>principal.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{busqueda.buscar}</from-action>
+			<from-outcome>exito</from-outcome>
+			<to-view-id>/resultadoBusqueda.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>resultadoBusqueda.xhtml</from-view-id>
 		<navigation-case>
 			<from-action>#{busqueda.buscar}</from-action>
 			<from-outcome>exito</from-outcome>
 			<to-view-id>/mostrarResultados.xhtml</to-view-id>
-			<redirect/>
+			<redirect />
 		</navigation-case>
-    </navigation-rule>	
-    <navigation-rule>
-	<from-view-id>listaElecciones.xhtml</from-view-id>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>listaElecciones.xhtml</from-view-id>
 		<navigation-case>
 			<from-action>#{BeanResultados.mostrarGraficos}</from-action>
 			<from-outcome>exito</from-outcome>
 			<to-view-id>/mostrarResultados.xhtml</to-view-id>
-			<redirect/>
+			<redirect />
 		</navigation-case>
-    </navigation-rule>	
-    <navigation-rule>
-	<from-view-id>listaReferendum.xhtml</from-view-id>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>listaReferendum.xhtml</from-view-id>
 		<navigation-case>
 			<from-action>#{BeanResultados.mostrarGraficos}</from-action>
 			<from-outcome>exito</from-outcome>
 			<to-view-id>/mostrarResultados.xhtml</to-view-id>
-			<redirect/>
+			<redirect />
 		</navigation-case>
-    </navigation-rule>	
-    <navigation-rule>
-	<from-view-id>listaCerradas.xhtml</from-view-id>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>listaCerradas.xhtml</from-view-id>
 		<navigation-case>
 			<from-action>#{BeanResultados.mostrarGraficos}</from-action>
 			<from-outcome>exito</from-outcome>
 			<to-view-id>/mostrarResultados.xhtml</to-view-id>
-			<redirect/>
+			<redirect />
 		</navigation-case>
-    </navigation-rule>	
-     <navigation-rule>
-	<from-view-id>listasAbiertas.xhtml</from-view-id>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>listasAbiertas.xhtml</from-view-id>
 		<navigation-case>
 			<from-action>#{BeanResultados.mostrarGraficos}</from-action>
 			<from-outcome>exito</from-outcome>
 			<to-view-id>/mostrarResultados.xhtml</to-view-id>
-			<redirect/>
+			<redirect />
 		</navigation-case>
-    </navigation-rule>	
+	</navigation-rule>
 
 </faces-config>
