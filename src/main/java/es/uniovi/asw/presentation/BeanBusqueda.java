@@ -50,23 +50,27 @@ public class BeanBusqueda
 				break;
 				
 			case "nom ini ":
-				
+				Repository.electionR.findByNameContainingAndStartDate(nombreProceso, fechaInicioProceso);
 				break;
 				
 			case "nom ini fin":
+				Repository.electionR.findByNameContainingAndStartDateAndExpiryDate(nombreProceso, fechaInicioProceso, fechaFinProceso);
+				break;
 				
+			case "ini":
+				Repository.electionR.findByStartDate(fechaInicioProceso);
 				break;
 				
 			case "ini fin":
-				
+				Repository.electionR.findByStartDateAndExpiryDate(fechaInicioProceso, fechaFinProceso);
 				break;
 				
 			case "nom fin":
-				
+				Repository.electionR.findByNameContainingAndStartDateAndExpiryDate(nombreProceso, fechaInicioProceso, fechaFinProceso);
 				break;
 				
 			default: // fin
-				Repository.electionR.findByStartDate(startName);
+				Repository.electionR.findByExpiryDate(fechaFinProceso);
 				break;
 		}
 		
