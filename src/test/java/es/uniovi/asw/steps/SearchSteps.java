@@ -2,6 +2,12 @@ package es.uniovi.asw.steps;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+
+import java.util.concurrent.TimeUnit;
+
+import org.junit.Before;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.IntegrationTest;
@@ -25,7 +31,7 @@ import es.uniovi.asw.Main;
 @IntegrationTest
 @WebAppConfiguration
 public class SearchSteps {
-	 
+	
 	  @Autowired
 	  protected WebApplicationContext context;
 
@@ -35,49 +41,19 @@ public class SearchSteps {
 	  @Value("${local.server.port}")
 	  protected int port;
 	  
-	  //Scenario 2
-	  @Given("^the client write in the option1 the name")
-	  public void the_client_write_in_the_option1() {
-		  
+	  //Scenario 2, 3, 4
+	  @Given("^the client write in the \"([^\"]*)\" the \"([^\"]*)\"$")
+	  public void the_client_write_in_the(String option, String type) {
+		  System.out.println("the client write in the "+option+" the "+type);
 	  }
-	  @When("^the client click in search button to execute the search by name")
-	  public void the_client_click_in_search_button_name(){
-	   
-	  }
-	  
-	  @Then("^search by name should be successful")
-	  public void search_should_be_successful_name(){
-	   
+	  @When("^the client click in search button to execute the search by \"([^\"]*)\"$")
+	  public void the_client_click_in_search_button(String str){
+		  System.out.println("the client click in search button to execute the search by "+str);
 	  }
 	  
-	  //Scenario 3
-	  @Given("^the client write in the option2 the open date")
-	  public void the_client_write_in_the_option2() {
-	  	
-	  }
-	  @When("^the client click in search button to execute the search by open date")
-	  public void the_client_click_in_search_button_open_date(){
-	   
+	  @Then("^search by \"([^\"]*)\" should be successful$")
+	  public void search_should_be_successful(String str){
+		  System.out.println("search by "+str+" should be successful");
 	  }
 	  
-	  @Then("^search by open date should be successful")
-	  public void search_should_be_successful_open_date(){
-	   
-	  }
-	  
-	  //Scenario 4
-	  @Given("^the client write in the option3 the close date")
-	  public void the_client_write_in_the_option3() {
-	  	
-	  }
-	  
-	  @When("^the client click in search button to execute the search by close date")
-	  public void the_client_click_in_search_button_close_date(){
-	   
-	  }
-	  
-	  @Then("^search by close date should be successful")
-	  public void search_should_be_successful_close_date(){
-	   
-	  }
 }
