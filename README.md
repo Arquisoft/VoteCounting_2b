@@ -9,6 +9,15 @@ Vote Counting
 [![Codacy Badge](https://api.codacy.com/project/badge/grade/9ccbfc27845d4fe8bd0ba6c866a82730)](https://www.codacy.com/app/jelabra/VoteCounting_2b)
 [![codecov.io](https://codecov.io/github/Arquisoft/VoteCounting_2b/coverage.svg?branch=master)](https://codecov.io/github/Arquisoft/VoteCounting_2b?branch=master)
 
+¿En qué consiste?
+=================
+Es un servicio Web que muestra los resultados de la votación una vez que ésta ha terminado. 
+En él se representan los resultados a través de una interfaz web en la cual se pueden observar 
+gráficas y estadísticas sobre la votación. 
+Puede haber votos que no lleguen de forma electrónica, por lo que llegarán con cierto tiempo
+de retraso. El sistema toma los datos actualizados y vuelve a realizar el recuento. 
+Además, el sistema permite escoger los resultados de elecciones a ver según el tipo. Los 
+tipos disponibles son: elecciones por referéndum, listas abiertas y listas cerradas. 
 
 # Authors
 
