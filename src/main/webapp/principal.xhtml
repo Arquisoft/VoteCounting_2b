@@ -12,21 +12,25 @@
 <h:body>
 	
 	<ui:include src="/snippets/navegacion.xhtml" />
-	<h1>Bienvenido a voteCouting_2b</h1>
 	<h:form>
 		<b:container layout="fluid">
+			<h1>Bienvenido a voteCouting_2b</h1>
+			<b:row>
+			<b:column span="6">
+			</b:column>
+			<b:column span="6">
 			<b:panel title="Criterios de búsqueda de un proceso electoral"
 				collapsible="false" look="primary">
 				<b:row>
-					<b:column medium-screen="2">
+					<b:column >
 						<h:outputText value="Buscar por nombre:" />
 					</b:column>
 					
-					<b:column medium-screen="4">
+					<b:column >
 						<b:inputText id="nombreProceso" placeholder="Nombre del proceso" value="#{busqueda.nombreProceso}"/>
 					</b:column>
 					
-					<b:column medium-screen="6">
+					<b:column >
 						<b:messages for="nombreProceso" />
 					</b:column>
 				</b:row>
@@ -37,17 +41,17 @@
 				
 				
 				<b:row>
-					<b:column medium-screen="2">
+					<b:column>
 						<h:outputText value="Buscar por fecha de inicio:" />
 					</b:column>
 					
-					<b:column medium-screen="4">
+					<b:column >
 						<b:datepicker id="fechaInicio" mode="toggle-icon"
 							placeholder="Fecha de inicio del proceso"
 							value="#{busqueda.fechaInicioProceso}"/>
 					</b:column>
 					
-					<b:column medium-screen="6">
+					<b:column >
 						<b:messages for="fechaInicio" />
 					</b:column>
 				</b:row>
@@ -58,17 +62,17 @@
 				
 				
 				<b:row>
-					<b:column medium-screen="2">
+					<b:column >
 						<h:outputText value="Buscar por fecha de fin:" />
 					</b:column>
 					
-					<b:column medium-screen="4">
+					<b:column >
 						<b:datepicker id="fechaFin" mode="toggle-icon"
 							placeholder="Fecha en la que termina el proceso"
 							value="#{busqueda.fechaFinProceso}"/>
 					</b:column>
 					
-					<b:column medium-screen="6">
+					<b:column >
 						<p:message for="fechaFin" />
 					</b:column>
 				</b:row>
@@ -85,6 +89,8 @@
 					</b:column>
 				</b:row>
 			</b:panel>
+			</b:column>
+			</b:row>
 		</b:container>
 	</h:form>
 </h:body>
