@@ -124,4 +124,19 @@ public abstract class Election {
 		return true;
 	}
 	
+	public int countVotes(){
+		int count=0;
+		for(Vote voto:votes){
+			count+=voto.getNumVotes();
+		}
+		return count;
+	}
+	
+	public boolean readyToRecount(){
+		for(Vote voto:votes)
+			if(!voto.isReadyToRecount())
+				return false;
+		return true;
+	}
+	
 }

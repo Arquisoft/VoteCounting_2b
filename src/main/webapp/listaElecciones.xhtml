@@ -51,7 +51,7 @@
 				<f:facet name="header">
 					<h:outputText value="Numero Votos"/>
 				</f:facet>
-				<h:outputText value="#{eleccion.votes.size()}" />
+				<h:outputText value="#{eleccion.countVotes()}" />
 			</h:column>
 			<h:column>
 				<f:facet name="header">
@@ -60,7 +60,9 @@
 				<h:form>
 					<b:commandButton ajax="true" value="Resultados" look="primary" 
 					actionListener="#{BeanRecuento.recuentoVotos(eleccion)}" 
-					action="#{BeanResultados.mostrarGraficos}"/>
+					action="#{BeanResultados.mostrarGraficos}" rendered="#{eleccion.readyToRecount()}"/>
+					<b:commandButton ajax="true" value="No se ha realizado el recuento" 
+					 look="danger" rendered="#{eleccion.readyToRecount()==false}" />
 				</h:form>
 			</h:column>
 		</b:dataTable>
