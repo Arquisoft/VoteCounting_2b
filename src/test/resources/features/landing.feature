@@ -22,12 +22,4 @@ Feature: landing page
     When the client click in search button to execute the search by "close date"
     Then search by "close date" should be successful
   
-  Scenario: the client want see "Listas Cerradas" of "Tipos de Elecciones"
-  	When the client choose "Listas Cerradas" with id "j_idt11"
-  	Then the client makes call to Listas Cerradas GET /listaCerradas.xhtml
-  	And the client receives Listas Cerradas status code of 200
-  	
-  Scenario: the client want see "Listas Abiertas" of "Tipos de Elecciones"
-  	When the client choose "Listas Abiertas" with id "j_idt12"
-  	Then the client makes call to Listas Abiertas GET /listaAbiertas.xhtml
-  	And the client receives Listas Abiertas status code of 404
+  
