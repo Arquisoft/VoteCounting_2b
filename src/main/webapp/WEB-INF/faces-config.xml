@@ -73,9 +73,9 @@
 	<navigation-rule>
 		<from-view-id>loginElectoral.xhtml</from-view-id>
 		<navigation-case>
-			<from-action>*</from-action>
+			<from-action>#{BeanValidator.validar}</from-action>
 			<from-outcome>exito</from-outcome>
-			<to-view-id>/listaElecciones.xhtml</to-view-id>
+			<to-view-id>/listaEleccionesSinRecuento.xhtml</to-view-id>
 			<redirect />
 		</navigation-case>
 	</navigation-rule>

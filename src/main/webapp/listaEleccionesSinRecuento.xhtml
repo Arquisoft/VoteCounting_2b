@@ -15,7 +15,11 @@ td {
 </h:head>
 <h:body>
 
-	<ui:include src="/snippets/navegacion.xhtml" />
+	<b:navBar brand="VoteCounting" inverse="true">
+		<b:navbarLinks>
+			<b:navLink value="Lista Elecciones Sin Recuento" href="listaEleccionesSinRecuento.xhtml"></b:navLink>
+		</b:navbarLinks>
+	</b:navBar>
 
 	<b:container layout="fluid">
 		<h1 style="text-align: center">Lista Elecciones Sin Realizar Recuento</h1>
