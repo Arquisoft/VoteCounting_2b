@@ -14,6 +14,9 @@ import es.uniovi.asw.seleniumTests.TiposEleccionesListasCerradas;
 import es.uniovi.asw.seleniumTests.TiposEleccionesReferendum;
 
 @RunWith(Suite.class)
+@SpringApplicationConfiguration(classes = Main.class)
+@WebAppConfiguration
+@IntegrationTest({ "server.port=0" })
 @SuiteClasses({ ListaElecciones.class, Principal.class, TiposEleccionesListasAbiertas.class,
 		TiposEleccionesListasCerradas.class, TiposEleccionesReferendum.class })
 public class TestSuiteSelenium {
