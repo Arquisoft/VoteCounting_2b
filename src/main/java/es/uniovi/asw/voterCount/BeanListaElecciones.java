@@ -23,8 +23,19 @@ public class BeanListaElecciones
 	public List<Referendum> referendums;
 	public List<OpenList> listasAbiertas;
 	public List<ClosedList> listasCerradas;
+	public List<Election> listaSinRecuento;
 	
 	
+	public List<Election> getListaSinRecuento() {
+		return listaSinRecuento;
+	}
+
+
+	public void setListaSinRecuento(List<Election> listaSinRecuento) {
+		this.listaSinRecuento = listaSinRecuento;
+	}
+
+
 	@PostConstruct
 	public void init()
 	{
@@ -33,6 +44,7 @@ public class BeanListaElecciones
 		referendums = new LinkedList<>();
 		listasCerradas= new LinkedList<>();
 		listasAbiertas= new LinkedList<>();
+		listaSinRecuento= new LinkedList<>();
 		
 		for(Election e:elecciones)
 		{
@@ -48,6 +60,9 @@ public class BeanListaElecciones
 			
 			if(e instanceof OpenList)
 				listasAbiertas.add((OpenList) e);
+			
+			if(!e.readyToRecount())
+				listaSinRecuento.add(e);
 		}
 		
 		System.out.println("BeanListaElecciones creado");

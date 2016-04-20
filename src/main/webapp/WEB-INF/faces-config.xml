@@ -59,5 +59,15 @@
 			<redirect />
 		</navigation-case>
 	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>loginElectoral.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{BeanValidator.validar}</from-action>
+			<from-outcome>exito</from-outcome>
+			<to-view-id>/listaEleccionesSinRecuento.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
 
 </faces-config>
