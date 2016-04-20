@@ -1,10 +1,6 @@
 package es.uniovi.asw.steps;
 
-import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
-
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -14,8 +10,6 @@ import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationContextLoader;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.web.context.WebApplicationContext;
 
 import cucumber.api.java.After;
@@ -38,7 +32,6 @@ public class LandingSteps{
 	public void setUp() throws Exception {
 		driver = new FirefoxDriver();
 		baseUrl = "http://localhost:8080";
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
 
 	
@@ -52,9 +45,6 @@ public class LandingSteps{
 	}
   @Autowired
   protected WebApplicationContext context;
-
-  protected MockMvc mvc;
-  protected MvcResult result;
   
   @Value("${local.server.port}")
   protected int port;

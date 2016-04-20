@@ -1,9 +1,5 @@
 package es.uniovi.asw.steps;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -15,17 +11,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.util.Assert;
 import org.springframework.web.context.WebApplicationContext;
-import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.*;
-
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
-import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Entonces;
 import cucumber.api.java.es.Y;
 import es.uniovi.asw.Factory;
@@ -46,7 +34,7 @@ public class LookSteps extends Factory {
 	public void setUp() throws Exception {
 		driver = new FirefoxDriver();
 		baseUrl = "http://localhost:8080";
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
 
 	// Scenario 5
