@@ -46,7 +46,29 @@ public class LookSteps {
 	    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	  }
 	
-	 
+	
+	  //Scenario 5
+	  @When("^the client click on the link \"([^\"]*)\"$")
+	  public void the_client_click_on_the_link(String str) throws Throwable {
+		  System.out.println("the client click on the link "+str);
+		  driver.get(baseUrl + "/principal.xhtml");
+		  assertEquals(str, driver.findElement(By.linkText(str)).getText());
+		  driver.findElement(By.id("j_idt8")).click();
+		  
+	  }
+
+	  @Then("^the client makes call to Lista Elecciones GET /listaElecciones\\.xhtml$$")
+	  public void the_client_makes_call_to_Lista_Elecciones_GET() throws Throwable {
+		  Assert.notNull(context);
+		  this.mvc = MockMvcBuilders.webAppContextSetup(context).build();
+		  result = mvc.perform(get("/listaElecciones.xhtml")).andReturn();
+		  driver.get(baseUrl + "/listaElecciones.xhtml");
+	  }
+	  
+	  @Then("^the client receives Lista Elecciones status code of (\\d+)$")
+	  public void the_client_receives_Lista_Elecciones_status_code_of(int stat) throws Throwable {
+		  assertThat(result.getResponse().getStatus(), is(stat));
+	  }
 	  
 	  //Scenario 6, 7, 8
 	  @When("^the client choose \"([^\"]*)\" with id \"([^\"]*)\"$")
@@ -100,8 +122,6 @@ public class LookSteps {
 	  public void the_client_receives_Listas_Abiertas_status_code_of(int stat) throws Throwable {
 		  assertThat(result.getResponse().getStatus(), is(stat));
 	  }
-	  
-	
 	  
 	  @After
 	  public void tearDown() throws Exception {

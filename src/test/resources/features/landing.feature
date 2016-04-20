@@ -21,6 +21,16 @@ Feature: landing page
    	Given the client write in the "option3" the "close date"
     When the client click in search button to execute the search by "close date"
     Then search by "close date" should be successful
+    
+  Scenario: the client want have a look of "Lista Elecciones"
+  	When the client click on the link "Lista Elecciones"
+  	Then the client makes call to Lista Elecciones GET /listaElecciones.xhtml
+  	And the client receives Lista Elecciones status code of 200
+  	
+  Scenario: the client want see "Referendum" of "Tipos de Elecciones"
+  	When the client choose "Referendum" with id "j_idt10"
+  	Then the client makes call to Referendum GET /listaReferendum.xhtml
+  	And the client receives Referendum status code of 200
   
   Scenario: the client want see "Listas Cerradas" of "Tipos de Elecciones"
   	When the client choose "Listas Cerradas" with id "j_idt11"
