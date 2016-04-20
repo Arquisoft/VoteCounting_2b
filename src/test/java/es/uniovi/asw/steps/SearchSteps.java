@@ -42,7 +42,7 @@ public class SearchSteps extends Factory{
 	  @Value("${local.server.port}")
 	  protected int port;
 	  
-	  //Scenario 2, 3, 4
+	  //Scenario 2
 	  @Given("^the client write in the \"([^\"]*)\" the \"([^\"]*)\"$")
 	  public void the_client_write_in_the(String option, String type) {
 		  System.out.println("the client write in the "+option+" the "+type);
