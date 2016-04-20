@@ -18,9 +18,18 @@
 	
 		<b:container layout="fluid">
 			<h1 style="text-align: center">Lista de Elecciones</h1>
-			<b:dataTable value="#{busqueda.eleccionesEncontradas}" var="eleccion"
+			
+			<h:outputText value="-----------------------" />
+			<br />
+			<h:outputText value="#{busqueda.eleccionesEncontradas.toArray()[0].name}" />
+			<h:outputText value="#{busqueda.nombreProceso}" />
+			<br />
+			<h:outputText value="-----------------------" />
+			
+			<b:dataTable value="#{busqueda.eleccionesEncontradas.toArray()}" var="eleccion"
 				id="bElection" styleClass="table table-striped table-bordered"
 				style="width:100%">
+				
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Nombre" />
@@ -32,7 +41,9 @@
 					<f:facet name="header">
 						<h:outputText value="Fecha de Comienzo" />
 					</f:facet>
-					<h:outputText value="#{eleccion.startDate}" />
+					<h:outputText value="#{eleccion.startDate}">
+						<f:convertDateTime pattern="d-M-yyyy" />
+					</h:outputText>
 	
 				</h:column>
 				
@@ -40,7 +51,9 @@
 					<f:facet name="header">
 						<h:outputText value="Fecha de Fin" />
 					</f:facet>
-					<h:outputText value="#{eleccion.expiryDate}" />
+					<h:outputText value="#{eleccion.expiryDate}">
+						<f:convertDateTime pattern="d-M-yyyy" />
+					</h:outputText>
 				</h:column>
 			</b:dataTable>
 		</b:container>

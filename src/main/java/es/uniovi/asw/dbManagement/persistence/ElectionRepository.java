@@ -1,6 +1,5 @@
 package es.uniovi.asw.dbManagement.persistence;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
@@ -22,13 +21,13 @@ public interface ElectionRepository extends CrudRepository<Election, Long>
 	
 	List<Election> findByNameContaining(String name);
 	
-	List<Election> findByStartDate(Date startName);
-	List<Election> findByExpiryDate(Date expiryDate);
+	List<Election> findByStartDate(String startName);
+	List<Election> findByExpiryDate(String expiryDate);
 	
-	List<Election> findByNameContainingAndStartDate(String name, Date startDate);
-	List<Election> findByNameContainingAndStartDateAndExpiryDate(String name, Date startDate, Date expiryDay);
+	List<Election> findByNameContainingAndStartDate(String name, String startDate);
+	List<Election> findByNameContainingAndStartDateAndExpiryDate(String name, String startDate, String expiryDay);
 	
-	List<Election> findByStartDateAndExpiryDate(Date startDate, Date expiryDay);
+	List<Election> findByStartDateAndExpiryDate(String startDate, String expiryDay);
 	
 	//=========================================================
 	

@@ -10,42 +10,39 @@ public class ParamsManager
 	private ParamsManager() {}
 	
 	
-	public static boolean areParamsNull(Object... params)
+	public static boolean areStringsNotNullAndNotEmpty(String... params)
 	{
-		for(Object element : params)
+		for(String element : params)
 		{
-			if(element == null)
+			if(element == null || element == "")
 			{
-				return true;
+				return false;
 			}
 		}
 		
 		
-		return false;
+		return true; // Ninguno de los Strings tiene el valor null o ""
 	}
 	
 	
-	public static Date parseStringToDate(String formato, String fechaParsear)
+	public static boolean isDateValid(String formato, String fechaParsear)
 	{
+		if(fechaParsear == null || fechaParsear == "")
+		{
+			return false;
+		}
+		
+		
 		try
 		{
-			return new SimpleDateFormat(formato).parse(fechaParsear);
+			new SimpleDateFormat(formato).parse(fechaParsear);
 		}
 		
 		catch(ParseException excep)
 		{
-			return null;
-		}
-	}
-	
-	
-	public static String parseDateToString(String formato, Date fechaParsear)
-	{
-		if(fechaParsear != null)
-		{
-			return new SimpleDateFormat(formato).format(fechaParsear);
+			return false;
 		}
 		
-		return null;
+		return true; // Fecha válida
 	}
 }

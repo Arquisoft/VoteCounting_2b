@@ -1,8 +1,9 @@
-package es.uniovi.asw.presentation;
+package es.uniovi.asw.voterResult;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+
+import javax.validation.ValidationException;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -16,6 +17,17 @@ import es.uniovi.asw.infrastructure.ParamsManager;
 @Scope("request")
 public class BeanBusqueda
 {
+	/*
+	 * Variable que indica si se debe mostrar al usuario una tabla con
+	 * los resultados de la búsqueda de elecciones que cumplan unos
+	 * determinados criterios.
+	 * 
+	 */
+	private boolean mostrarTablaResultados = false;
+	
+	
+	
+	// Lista de elecciones que encajan con los criterios de búsqueda
 	private List<Election> eleccionesEncontradas;
 	
 	// formato usado en las fechas
@@ -24,16 +36,14 @@ public class BeanBusqueda
 	/*
 	 * Criterios de búsqueda
 	 * 
-	 * En esta versión se supone que el escribió correctamente los datos de
-	 * búsqueda. Si hay alguno incorrecto, se supone que ese campo estaba
-	 * en blanco
-	 * 
-	 * Habrá que corregirlo para que muertre un error al usuario
+	 * En esta versión se supone que todos los posibles valores que
+	 * el usuario ponga en el campo nombre del proceso son válidos
+	 * (a excepción de "")
 	 * 
 	 */
 	private String nombreProceso;
-	private Date fechaInicioProceso;
-	private Date fechaFinProceso;
+	private String fechaInicioProceso;
+	private String fechaFinProceso;
 	
 	
 	/**
@@ -99,17 +109,17 @@ public class BeanBusqueda
 	{
 		String criterios = "";
 		
-		if(!ParamsManager.areParamsNull(nombreProceso))
+		if( ParamsManager.areStringsNotNullAndNotEmpty(nombreProceso) )
 		{
 			criterios += "nom ";
 		}
 		
-		if(!ParamsManager.areParamsNull(fechaInicioProceso))
+		if(!ParamsManager.isDateValid(formatoFechas, fechaInicioProceso))
 		{
 			criterios += "ini ";
 		}
 		
-		if(!ParamsManager.areParamsNull(fechaFinProceso))
+		if(!ParamsManager.isDateValid(formatoFechas, fechaFinProceso))
 		{
 			criterios += "fin";
 		}
@@ -120,6 +130,15 @@ public class BeanBusqueda
 		}
 		
 		return criterios;
+	}
+	
+	
+	public void validarFecha(String fecha)
+	{
+		if( !ParamsManager.isDateValid(formatoFechas, fechaFinProceso) )
+		{
+			throw new ValidationException("");
+		}
 	}
 	
 	
@@ -149,23 +168,23 @@ public class BeanBusqueda
 	
 	public String getFechaInicioProceso()
 	{
-		return ParamsManager.parseDateToString(formatoFechas, fechaInicioProceso);
+		return fechaInicioProceso;
 	}
 	
 	public void setFechaInicioProceso(String fechaInicioProceso)
 	{
-		this.fechaInicioProceso = ParamsManager.parseStringToDate(formatoFechas, fechaInicioProceso);
+		this.fechaInicioProceso = fechaInicioProceso;
 	}
 	
 	
 	public String getFechaFinProceso()
 	{
-		return ParamsManager.parseDateToString(formatoFechas, fechaInicioProceso);
+		return fechaInicioProceso;
 	}
 	
 	public void setFechaFinProceso(String fechaFinProceso)
 	{
-		this.fechaFinProceso = ParamsManager.parseStringToDate(formatoFechas, fechaFinProceso);
+		this.fechaFinProceso = fechaFinProceso;
 	}
 	
 	
@@ -177,5 +196,16 @@ public class BeanBusqueda
 	public void setEleccionesEncontradas(List<Election> eleccionesEncontradas)
 	{
 		this.eleccionesEncontradas = eleccionesEncontradas;
+	}
+	
+	
+	public boolean getMostrarTablaResultados()
+	{
+		return mostrarTablaResultados;
+	}
+	
+	public void setMostrarTablaResultados(boolean mostrarTablaResultados)
+	{
+		this.mostrarTablaResultados = mostrarTablaResultados;
 	}
 }
