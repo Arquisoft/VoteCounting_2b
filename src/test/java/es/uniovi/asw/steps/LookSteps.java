@@ -9,8 +9,6 @@ import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationContextLoader;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.web.context.WebApplicationContext;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
@@ -25,8 +23,7 @@ import es.uniovi.asw.Main;
 public class LookSteps extends Factory {
 	@Autowired
 	protected WebApplicationContext context;
-	protected MockMvc mvc;
-	protected MvcResult result;
+	
 	private WebDriver driver;
 	private String baseUrl;
 
