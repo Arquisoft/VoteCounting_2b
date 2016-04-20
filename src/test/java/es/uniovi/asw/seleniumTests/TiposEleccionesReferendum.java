@@ -1,30 +1,14 @@
 package es.uniovi.asw.seleniumTests;
 
-import java.util.regex.Pattern;
-import java.util.concurrent.TimeUnit;
-import org.junit.*;
-import static org.junit.Assert.*;
-import static org.hamcrest.CoreMatchers.*;
-import org.openqa.selenium.*;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
 
-public class TiposEleccionesReferendum {
-  private WebDriver driver;
-  private String baseUrl;
-  private boolean acceptNextAlert = true;
-  private StringBuffer verificationErrors = new StringBuffer();
-
-  @Before
-  public void setUp() throws Exception {
-    driver = new FirefoxDriver();
-    baseUrl = "http://localhost:8080/";
-    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-  }
+public class TiposEleccionesReferendum extends Factory{
 
   @Test
   public void testTiposEleccionesReferendum() throws Exception {
-    driver.get(baseUrl + "/mostrarResultados.xhtml");
+    driver.get(baseUrl + "/principal.xhtml");
     driver.findElement(By.id("dtLj_idt9")).click();
     driver.findElement(By.linkText("Referendum")).click();
     new Select(driver.findElement(By.name("bElection_length"))).selectByVisibleText("25");
@@ -47,45 +31,4 @@ public class TiposEleccionesReferendum {
     driver.findElement(By.cssSelector("input.form-control.input-sm")).sendKeys("yes");
   }
 
-  @After
-  public void tearDown() throws Exception {
-    driver.quit();
-    String verificationErrorString = verificationErrors.toString();
-    if (!"".equals(verificationErrorString)) {
-      fail(verificationErrorString);
-    }
-  }
-
-  private boolean isElementPresent(By by) {
-    try {
-      driver.findElement(by);
-      return true;
-    } catch (NoSuchElementException e) {
-      return false;
-    }
-  }
-
-  private boolean isAlertPresent() {
-    try {
-      driver.switchTo().alert();
-      return true;
-    } catch (NoAlertPresentException e) {
-      return false;
-    }
-  }
-
-  private String closeAlertAndGetItsText() {
-    try {
-      Alert alert = driver.switchTo().alert();
-      String alertText = alert.getText();
-      if (acceptNextAlert) {
-        alert.accept();
-      } else {
-        alert.dismiss();
-      }
-      return alertText;
-    } finally {
-      acceptNextAlert = true;
-    }
-  }
 }
