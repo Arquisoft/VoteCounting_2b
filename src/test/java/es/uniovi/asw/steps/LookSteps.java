@@ -26,12 +26,13 @@ import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import es.uniovi.asw.Factory;
 import es.uniovi.asw.Main;
 
 @ContextConfiguration(classes=Main.class, loader=SpringApplicationContextLoader.class)
 @IntegrationTest
 @WebAppConfiguration
-public class LookSteps {
+public class LookSteps extends Factory{
 	@Autowired
 	  protected WebApplicationContext context;
 	  protected MockMvc mvc;
@@ -74,16 +75,14 @@ public class LookSteps {
 	  @When("^the client choose \"([^\"]*)\" with id \"([^\"]*)\"$")
 	  public void the_client_choose(String str, String id) throws Throwable {
 		 System.out.println("the client choose "+str);
-//		 driver.get(baseUrl + "/principal.xhtml");
-//		 assertEquals(str, driver.findElement(By.linkText(str)).getText());
-//		 driver.findElement(By.id("dtLj_idt9")).click();
-//		 driver.findElement(By.id("dtLj_idt9")).click();
-//		 driver.findElement(By.linkText(str)).click();
-//		 driver.get(baseUrl + "/listaElecciones.xhtml");
-//		 assertEquals(str, driver.findElement(By.linkText(str)).getText());
-//		 driver.findElement(By.id("dtLj_idt9")).click();
-//		 driver.findElement(By.id("dtLj_idt9")).click();
-//		 driver.findElement(By.linkText(str)).click();
+		 driver.get(baseUrl + "/principal.xhtml");
+		 assertEquals(str, driver.findElement(By.linkText(str)).getText());
+		 driver.findElement(By.id("dtLj_idt9")).click();
+		 driver.findElement(By.linkText(str)).click();
+		 driver.get(baseUrl + "/listaElecciones.xhtml");
+		 assertEquals(str, driver.findElement(By.linkText(str)).getText());
+		 driver.findElement(By.id("dtLj_idt9")).click();
+		 driver.findElement(By.linkText(str)).click();
 	  }
 
 	  @Then("^the client makes call to Referendum GET /listaReferendum\\.xhtml$$")

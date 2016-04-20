@@ -25,12 +25,13 @@ import static org.junit.Assert.*;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import es.uniovi.asw.Factory;
 import es.uniovi.asw.Main;
 
 @ContextConfiguration(classes=Main.class, loader=SpringApplicationContextLoader.class)
 @IntegrationTest
 @WebAppConfiguration
-public class SearchSteps {
+public class SearchSteps extends Factory{
 	
 	  @Autowired
 	  protected WebApplicationContext context;
