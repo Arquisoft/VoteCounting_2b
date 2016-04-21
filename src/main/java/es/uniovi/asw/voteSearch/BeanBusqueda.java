@@ -1,4 +1,4 @@
-package es.uniovi.asw.voterResult;
+package es.uniovi.asw.voteSearch;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 import es.uniovi.asw.dbManagement.model.Election;
 import es.uniovi.asw.dbManagement.persistence.Repository;
-import es.uniovi.asw.infrastructure.ParamsManager;
+import es.uniovi.asw.voteSearch.infrastructure.ParamsManager;
 
 
 @Component("busqueda")

@@ -1,4 +1,4 @@
-package es.uniovi.asw.infrastructure;
+package es.uniovi.asw.voteSearch.infrastructure;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

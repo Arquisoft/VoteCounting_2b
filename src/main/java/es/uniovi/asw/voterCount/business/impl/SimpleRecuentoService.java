@@ -8,21 +8,26 @@ import es.uniovi.asw.voterCount.business.impl.classes.RecuentoListaAbierta;
 import es.uniovi.asw.voterCount.business.impl.classes.RecuentoListaCerrada;
 import es.uniovi.asw.voterCount.business.impl.classes.RecuentoReferendum;
 
-public class SimpleRecuentoService implements RecuentoService{
 
+public class SimpleRecuentoService implements RecuentoService
+{
 	@Override
-	public HashMap<String, Integer> recuentoReferendum(Election e) {
+	public HashMap<String, Integer> recuentoReferendum(Election e)
+	{
 		return new RecuentoReferendum().recuento(e);
 	}
-
+	
+	
 	@Override
-	public HashMap<String, Integer> recuentoListaCerrada(Election e) {
+	public HashMap<String, Integer> recuentoListaCerrada(Election e)
+	{
 		return new RecuentoListaCerrada().recuento(e);
 	}
-
+	
+	
 	@Override
-	public HashMap<String, Integer> recuentoListaAbierta(Election e) {
+	public HashMap<String, Integer> recuentoListaAbierta(Election e)
+	{
 		return new RecuentoListaAbierta().recuento(e);
 	}
-
 }

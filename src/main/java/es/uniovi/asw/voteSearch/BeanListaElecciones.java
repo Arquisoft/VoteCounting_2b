@@ -1,4 +1,4 @@
-package es.uniovi.asw.voterCount;
+package es.uniovi.asw.voteSearch;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -26,16 +26,18 @@ public class BeanListaElecciones
 	public List<Election> listaSinRecuento;
 	
 	
-	public List<Election> getListaSinRecuento() {
+	public List<Election> getListaSinRecuento()
+	{
 		return listaSinRecuento;
 	}
-
-
-	public void setListaSinRecuento(List<Election> listaSinRecuento) {
+	
+	
+	public void setListaSinRecuento(List<Election> listaSinRecuento)
+	{
 		this.listaSinRecuento = listaSinRecuento;
 	}
-
-
+	
+	
 	@PostConstruct
 	public void init()
 	{
@@ -73,32 +75,39 @@ public class BeanListaElecciones
 	{
 		return elecciones;
 	}
-
-	public void setElecciones(List<Election> elecciones) {
+	
+	public void setElecciones(List<Election> elecciones)
+	{
 		this.elecciones = elecciones;
 	}
-
-	public List<Referendum> getReferendums() {
+	
+	public List<Referendum> getReferendums()
+	{
 		return referendums;
 	}
-
-	public void setReferendums(List<Referendum> referendums) {
+	
+	public void setReferendums(List<Referendum> referendums)
+	{
 		this.referendums = referendums;
 	}
-
-	public List<OpenList> getListasAbiertas() {
+	
+	public List<OpenList> getListasAbiertas()
+	{
 		return listasAbiertas;
 	}
-
-	public void setListasAbiertas(List<OpenList> listasAbiertas) {
+	
+	public void setListasAbiertas(List<OpenList> listasAbiertas)
+	{
 		this.listasAbiertas = listasAbiertas;
 	}
-
-	public List<ClosedList> getListasCerradas() {
+	
+	public List<ClosedList> getListasCerradas()
+	{
 		return listasCerradas;
 	}
-
-	public void setListasCerradas(List<ClosedList> listasCerradas) {
+	
+	public void setListasCerradas(List<ClosedList> listasCerradas)
+	{
 		this.listasCerradas = listasCerradas;
 	}
 }
