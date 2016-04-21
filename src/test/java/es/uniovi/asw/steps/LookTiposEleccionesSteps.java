@@ -1,50 +1,19 @@
 package es.uniovi.asw.steps;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
-
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
-
-import cucumber.api.java.After;
-import cucumber.api.java.Before;
-import cucumber.api.java.es.Cuando;
-import cucumber.api.java.es.Entonces;
 import cucumber.api.java.es.Y;
-import es.uniovi.asw.Factory;
+import es.uniovi.asw.util.SeleniumUtils;
 
 public class LookTiposEleccionesSteps {
-	protected WebDriver driver;
-	protected String baseUrl;
-	protected boolean acceptNextAlert = true;
-	protected StringBuffer verificationErrors = new StringBuffer();
 	
-	@Before
-	public void setUp() throws Exception {
-		driver = new FirefoxDriver();
-		baseUrl = "http://localhost:8080";
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-	}
-
-	
-	@After
-	public void tearDown() throws Exception {
-		driver.quit();
-		String verificationErrorString = verificationErrors.toString();
-		if (!"".equals(verificationErrorString)) {
-			fail(verificationErrorString);
-		}
-	}
+	protected WebDriver driver = SeleniumUtils.getDriver();
 	
 	  //Scenario 3, 4, 5
 	  @Y("^el cliente selecciona \"([^\"]*)\"$")
 	  public void el_cliente_selecciona(String str) throws Throwable {
-		  driver.get(baseUrl + "/lista"+str+".xhtml");
-		  
+		  driver.get("http://localhost:8080" + "/lista"+str+".xhtml");
 		  
 	  }
 
@@ -69,5 +38,7 @@ public class LookTiposEleccionesSteps {
 //		    new Select(driver.findElement(By.name("bcarPool_length"))).selectByVisibleText("100");
 //		    driver.findElement(By.cssSelector("th.sorting_asc")).click();
 //		    driver.findElement(By.cssSelector("th.sorting")).click();
+		  
+		  SeleniumUtils.finishTest(driver);
 	  }
 }

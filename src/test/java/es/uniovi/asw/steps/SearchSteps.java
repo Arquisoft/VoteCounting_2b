@@ -1,12 +1,9 @@
 package es.uniovi.asw.steps;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationContextLoader;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.web.context.WebApplicationContext;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -18,12 +15,6 @@ import es.uniovi.asw.Main;
 @WebAppConfiguration
 public class SearchSteps extends Factory{
 	
-	  @Autowired
-	  protected WebApplicationContext context;
-	  
-	  @Value("${local.server.port}")
-	  protected int port;
-	  
 	  //Scenario 2
 	  @Given("^the client write in the \"([^\"]*)\" the \"([^\"]*)\"$")
 	  public void the_client_write_in_the(String option, String type) {
