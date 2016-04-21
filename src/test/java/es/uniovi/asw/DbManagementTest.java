@@ -375,4 +375,65 @@ public class DbManagementTest {
         assertFalse(user5.equals(user4));
 
     }
+	@Test
+ public void testTurnOut() {
+
+		ClosedList election1=new ClosedList();
+		OpenList election2=new OpenList();
+		
+		Voter voter1=new Voter("Sergio", "45678913H", "sergio@gmail.com");
+		Voter voter2=new Voter("Marcelo", "36925816L", "marcelo@gmail.com");
+		Voter voter3=new Voter("Nacho", "95135746P", "nacho@gmail.com");
+		
+		Turnout turn1= new Turnout(election1, voter1);
+		Turnout turn2= new Turnout(election1, voter2);
+		Turnout turn3= new Turnout(election1, voter3);
+		Turnout turn4= new Turnout(election2, voter1);
+		Turnout turn5= new Turnout(election2, voter2);
+		Turnout turn6= new Turnout(election2, voter3);
+        
+
+		assertTrue(turn1.equals(turn1));
+		assertTrue(turn2.equals(turn2));
+		assertTrue(turn3.equals(turn3));
+		assertTrue(turn4.equals(turn4));
+		assertTrue(turn5.equals(turn5));
+		assertTrue(turn6.equals(turn6));
+		
+        assertFalse(turn1.equals(turn2));
+        assertFalse(turn1.equals(turn3));
+        assertFalse(turn1.equals(turn4));
+        assertFalse(turn1.equals(turn5));
+        assertFalse(turn1.equals(turn6));
+        
+        assertFalse(turn2.equals(turn1));
+        assertFalse(turn2.equals(turn3));
+        assertFalse(turn2.equals(turn4));
+        assertFalse(turn2.equals(turn5));
+        assertFalse(turn2.equals(turn6));
+        
+        assertFalse(turn3.equals(turn1));
+        assertFalse(turn3.equals(turn2));
+        assertFalse(turn3.equals(turn4));
+        assertFalse(turn3.equals(turn5));
+        assertFalse(turn3.equals(turn6));
+        
+        assertFalse(turn4.equals(turn1));
+        assertFalse(turn4.equals(turn2));
+        assertFalse(turn4.equals(turn3));
+        assertFalse(turn4.equals(turn5));
+        assertFalse(turn4.equals(turn6));
+        
+        assertFalse(turn5.equals(turn1));
+        assertFalse(turn5.equals(turn2));
+        assertFalse(turn5.equals(turn3));
+        assertFalse(turn5.equals(turn4));
+        assertFalse(turn5.equals(turn6));
+        
+        assertFalse(turn6.equals(turn1));
+        assertFalse(turn6.equals(turn2));
+        assertFalse(turn6.equals(turn3));
+        assertFalse(turn6.equals(turn4));
+        assertFalse(turn6.equals(turn5));
+    }
 }
