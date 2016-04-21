@@ -338,4 +338,41 @@ public class DbManagementTest {
         assertEquals("MismaCandidaturas",candidature,candidature1);
 
     }
+	
+	@Test
+	 public void testUser() {
+
+		
+        User user1 = new User("Borja", "12345678R", "borja@gmail.com", 1, "borja");
+        User user2 = new User("Nauce", "12345678R", "borja@gmail.com", 1, "borja");
+        User user3 = new User("Nauce", "12345678T", "nauce@gmail.com", 1, "borja");
+        User user4 = new User("Nauce", "12345678T", "nauce@gmail.com", 2, "borja");
+        User user5 = new User("Nauce", "12345678T", "nauce@gmail.com", 2, "nauce");
+
+        assertTrue(user1.equals(user2));
+        assertFalse(user1.equals(user3));
+        assertFalse(user1.equals(user4));
+        assertFalse(user1.equals(user5));
+        
+        assertTrue(user2.equals(user1));
+        assertFalse(user2.equals(user3));
+        assertFalse(user2.equals(user4));
+        assertFalse(user2.equals(user5));
+        
+        assertFalse(user3.equals(user1));
+        assertFalse(user3.equals(user2));
+        assertTrue(user3.equals(user4));
+        assertFalse(user3.equals(user5));
+        
+        assertFalse(user4.equals(user1));
+        assertFalse(user4.equals(user2));
+        assertTrue(user4.equals(user3));
+        assertFalse(user4.equals(user5));
+        
+        assertFalse(user5.equals(user1));
+        assertFalse(user5.equals(user2));
+        assertFalse(user5.equals(user3));
+        assertFalse(user5.equals(user4));
+
+    }
 }
