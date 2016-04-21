@@ -34,12 +34,12 @@
 								<b:message for="nombreProceso" />
 							</b:column>
 						</b:row>
-
-
+						
+						
 						<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 						<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-
-
+						
+						
 						<b:row>
 							<b:column>
 								<h:outputText value="Buscar por fecha de inicio:" />
@@ -56,12 +56,12 @@
 								<b:message for="fechaInicio" />
 							</b:column>
 						</b:row>
-
-
+						
+						
 						<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 						<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-
-
+						
+						
 						<b:row>
 							<b:column>
 								<h:outputText value="Buscar por fecha de fin:" />
@@ -86,11 +86,18 @@
 
 						<b:row>
 							<b:column>
-								<b:commandButton value="buscar" action="#{busqueda.buscar}"
-												look="primary" style="width:100%" />
+								<b:commandButton id="busqueda" value="buscar" action="#{busqueda.buscar}"
+												look="primary" style="width:100%"
+												ajax="tue" update="@form"/>
 							</b:column>
 						</b:row>
 						
+						
+						<b:row>
+							<b:column>
+								<b:message for ="busqueda"/>
+							</b:column>
+						</b:row>
 					</b:panel>
 				</h:form>
 			</b:column>

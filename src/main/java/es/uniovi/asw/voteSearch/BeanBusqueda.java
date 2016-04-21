@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.context.FacesContext;
 import javax.validation.ValidationException;
 
@@ -19,8 +20,13 @@ import es.uniovi.asw.voteSearch.infrastructure.ParamsManager;
 @Scope("request")
 public class BeanBusqueda
 {
+	@ManagedProperty("#{facesContext}")
+	FacesContext faces;
+	
+	
 	// Lista de elecciones que encajan con los criterios de búsqueda
 	private List<Election> eleccionesEncontradas;
+	
 	
 	// formato usado en las fechas
 	private final String formatoFechas = "dd/MM/yyyy";
@@ -48,6 +54,7 @@ public class BeanBusqueda
 	 * @return   exito si la búsqueda tiene éxito o fracaso en caso contrario
 	 * 
 	 */
+	@SuppressWarnings("static-access") // Propiedad con inyección de dependencia (el compilador no lo detecta)
 	public String buscar()
 	{		
 		String criteriosBusqueda = evaluarParametrosBusqueda();
@@ -55,7 +62,7 @@ public class BeanBusqueda
 		if (criteriosBusqueda.equals("fracaso"))
 		{
 			FacesMessage mensaje = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error!", "Tiene que indicar al menos un criterio de búsqueda válido");
-			FacesContext.getCurrentInstance().addMessage(null, mensaje);
+			faces.getCurrentInstance().addMessage("busqueda", mensaje);
 			
 			
 			// Si la busqueda va mal no se carga la tabla de resultados
@@ -141,11 +148,20 @@ public class BeanBusqueda
 	
 	public void validarFecha(String fecha)
 	{
-		if(ParamsManager.areStrings_NotNull_And_NotEmpty(fecha) && !ParamsManager.isDateValid(formatoFechas, fecha) )
+		/* 
+		 * Si se indicó alguna fecha
+		 */
+		if(!ParamsManager.areStrings_NotNull_And_NotEmpty(fecha) )
 		{
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("La fecha indicada no es válida"));
-			
-			throw new ValidationException();
+			/*
+			 * Si no es una fecha válida
+			 */
+			if(!ParamsManager.isDateValid(formatoFechas, fecha))
+			{
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("La fecha indicada no es válida"));
+				
+				throw new ValidationException();
+			}
 		}
 	}
 	
