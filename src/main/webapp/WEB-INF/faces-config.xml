@@ -11,16 +11,6 @@
 	</application>
 	
 	<navigation-rule>
-		<from-view-id>busqueda.xhtml</from-view-id>
-		<navigation-case>
-			<from-action>#{busqueda.buscar}</from-action>
-			<from-outcome>exito</from-outcome>
-			<to-view-id>/resultadoBusqueda.xhtml</to-view-id>
-			<redirect />
-		</navigation-case>
-	</navigation-rule>
-	
-	<navigation-rule>
 		<from-view-id>listaElecciones.xhtml</from-view-id>
 		<navigation-case>
 			<from-action>#{BeanResultados.mostrarGraficos}</from-action>

@@ -48,14 +48,12 @@ public class LookSteps extends Factory {
 	    new Select(driver.findElement(By.name("bElection_length"))).selectByVisibleText("100");
 	    driver.findElement(By.cssSelector("th.sorting_asc")).click();
 	    driver.findElement(By.cssSelector("th.sorting")).click();
-		//driver.findElement(By.cssSelector("input.form-control.input-sm")).sendKeys("cataluña");
-		//driver.findElement(By.cssSelector("input.form-control.input-sm")).sendKeys("");
 		
-		driver.findElement(By.id("bElection:0:j_idt30:j_idt31")).click();
+		driver.findElement(By.id("bElection:3:j_idt29:j_idt30")).click();
 		
-		SeleniumUtils.esperaCargaPagina(driver, "text", "Opciones", 2);
+		SeleniumUtils.esperaCargaPagina(driver, "text", "Opciones", 4);
 		
-		 SeleniumUtils.finishTest(driver);
+		SeleniumUtils.finishTest(driver);
 	}
 
 }
