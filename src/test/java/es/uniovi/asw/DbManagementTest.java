@@ -389,10 +389,39 @@ public class DbManagementTest {
 
     }
 	@Test
- public void testTurnOut() {
+	public void testTurnOut() {
 
 		ClosedList election1=new ClosedList();
 		OpenList election2=new OpenList();
+		
+		Candidature cand1=new Candidature();
+		Candidature cand2=new Candidature();
+		Candidature cand3=new Candidature();
+		Candidature cand4=new Candidature();
+		
+		cand1.setName("cand1");
+		cand1.setDescription("description cand1");
+		cand2.setName("cand2");
+		cand2.setDescription("description cand2");
+		cand3.setName("cand3");
+		cand3.setDescription("description cand3");
+		cand4.setName("cand4");
+		cand4.setDescription("description cand4");
+		
+		election1.addCandidature(cand1);
+		election1.addCandidature(cand2);
+		election1.addCandidature(cand3);
+		election1.addCandidature(cand4);
+		
+		Candidate candidate1=new Candidate();
+		Candidate candidate2=new Candidate();
+		Candidate candidate3=new Candidate();
+		Candidate candidate4=new Candidate();
+		
+		election2.addCandidate(candidate1);
+		election2.addCandidate(candidate2);
+		election2.addCandidate(candidate3);
+		election2.addCandidate(candidate4);
 		
 		Voter voter1=new Voter("Sergio", "45678913H", "sergio@gmail.com");
 		Voter voter2=new Voter("Marcelo", "36925816L", "marcelo@gmail.com");
@@ -448,5 +477,15 @@ public class DbManagementTest {
         assertFalse(turn6.equals(turn3));
         assertFalse(turn6.equals(turn4));
         assertFalse(turn6.equals(turn5));
+        
+        election1.removeCandidature(cand1);
+		election1.removeCandidature(cand2);
+		election1.removeCandidature(cand3);
+		election1.removeCandidature(cand4);
+		
+		election2.removeCandidate(candidate1);
+		election2.removeCandidate(candidate2);
+		election2.removeCandidate(candidate3);
+		election2.removeCandidate(candidate4);
     }
 }
