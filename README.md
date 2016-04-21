@@ -21,6 +21,12 @@ de retraso. El sistema toma los datos actualizados y vuelve a realizar el recuen
 Además, el sistema permite escoger los resultados de elecciones a ver según el tipo. Los 
 tipos disponibles son: elecciones por referéndum, listas abiertas y listas cerradas. 
 
+¿Como se puede probar?
+----------------------
+Se puede acceder al servicio a través del siguiente link a Heroku:
+
+http://vote-counting-2b.herokuapp.com
+
 # Authors
 
 * Francisco De Borja Fernández González
