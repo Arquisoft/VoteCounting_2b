@@ -53,7 +53,7 @@ public class RecuentoListaCerrada {
 			
 			escañosPartidos.replace(partidoMax, escañosPartidos.get(partidoMax)+1);
 		}
-		System.out.println("Repartos de escaños realizados");
+	
 		return escañosPartidos;
 	}
 }

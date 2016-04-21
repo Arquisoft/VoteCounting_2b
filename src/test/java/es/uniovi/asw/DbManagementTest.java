@@ -17,6 +17,8 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import es.uniovi.asw.dbManagement.model.*;
+import es.uniovi.asw.dbManagement.model.types.TurnoutKey;
+import es.uniovi.asw.dbManagement.model.types.VoteKey;
 import es.uniovi.asw.dbManagement.persistence.Repository;
 import es.uniovi.asw.dbManagement.persistence.RepositoryConfiguration;
 
@@ -373,6 +375,7 @@ public class DbManagementTest {
         assertFalse(user5.equals(user2));
         assertFalse(user5.equals(user3));
         assertFalse(user5.equals(user4));
+        
 
     }
 	@Test
