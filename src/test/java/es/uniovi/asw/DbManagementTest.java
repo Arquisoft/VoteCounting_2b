@@ -350,31 +350,65 @@ public class DbManagementTest {
         User user3 = new User("Nauce", "12345678T", "nauce@gmail.com", 1, "borja");
         User user4 = new User("Nauce", "12345678T", "nauce@gmail.com", 2, "borja");
         User user5 = new User("Nauce", "12345678T", "nauce@gmail.com", 2, "nauce");
+        User user6 = new User("Pepe", "12345678P", null, 2, "pepe");
+        User user7 = new User("Pepe", "12345678P", null, 2, null);
 
+        assertTrue(user1.equals(user1));
+        assertFalse(user2.equals(user2));
+        assertFalse(user3.equals(user3));
+        assertFalse(user4.equals(user4));
+        assertFalse(user5.equals(user5));
+        assertFalse(user6.equals(user6));
+        assertFalse(user7.equals(user7));
+        
         assertTrue(user1.equals(user2));
         assertFalse(user1.equals(user3));
         assertFalse(user1.equals(user4));
         assertFalse(user1.equals(user5));
+        assertFalse(user1.equals(user6));
+        assertFalse(user1.equals(user7));
         
         assertTrue(user2.equals(user1));
         assertFalse(user2.equals(user3));
         assertFalse(user2.equals(user4));
         assertFalse(user2.equals(user5));
+        assertFalse(user2.equals(user6));
+        assertFalse(user2.equals(user7));
         
         assertFalse(user3.equals(user1));
         assertFalse(user3.equals(user2));
         assertTrue(user3.equals(user4));
         assertFalse(user3.equals(user5));
+        assertFalse(user3.equals(user6));
+        assertFalse(user3.equals(user7));
         
         assertFalse(user4.equals(user1));
         assertFalse(user4.equals(user2));
         assertTrue(user4.equals(user3));
         assertFalse(user4.equals(user5));
+        assertFalse(user4.equals(user6));
+        assertFalse(user4.equals(user7));
         
         assertFalse(user5.equals(user1));
         assertFalse(user5.equals(user2));
         assertFalse(user5.equals(user3));
         assertFalse(user5.equals(user4));
+        assertFalse(user5.equals(user6));
+        assertFalse(user5.equals(user7));
+        
+        assertFalse(user6.equals(user1));
+        assertFalse(user6.equals(user2));
+        assertFalse(user6.equals(user3));
+        assertFalse(user6.equals(user4));
+        assertFalse(user6.equals(user5));
+        assertFalse(user6.equals(user7));
+        
+        assertFalse(user7.equals(user1));
+        assertFalse(user7.equals(user2));
+        assertFalse(user7.equals(user3));
+        assertFalse(user7.equals(user4));
+        assertFalse(user7.equals(user5));
+        assertFalse(user7.equals(user6));
         
         TurnoutKey tkey = new TurnoutKey();
         TurnoutKey tkey2 = tkey;
