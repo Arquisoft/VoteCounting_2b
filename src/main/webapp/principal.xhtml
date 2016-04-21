@@ -31,7 +31,7 @@
 							</b:column>
 							
 							<b:column >
-								<b:messages for="nombreProceso" />
+								<b:messages for="nombreProceso" redisplay="false"/>
 							</b:column>
 						</b:row>
 						
@@ -47,12 +47,13 @@
 							
 							<b:column >
 								<b:datepicker id="fechaInicio" mode="toggle-icon"
+									validator="#{busqueda.validarFecha(busqueda.fechaInicioProceso)}"
 									placeholder="Fecha de inicio del proceso"
 									value="#{busqueda.fechaInicioProceso}"/>
 							</b:column>
 							
 							<b:column >
-								<b:messages for="fechaInicio" />
+								<b:messages for="fechaInicio" redisplay="false"/>
 							</b:column>
 						</b:row>
 						
@@ -69,11 +70,12 @@
 							<b:column >
 								<b:datepicker id="fechaFin" mode="toggle-icon"
 									placeholder="Fecha en la que termina el proceso"
+									validator="#{busqueda.validarFecha(busqueda.fechaFinProceso)}"
 									value="#{busqueda.fechaFinProceso}"/>
 							</b:column>
 							
 							<b:column >
-								<p:message for="fechaFin" />
+								<p:message for="fechaFin" redisplay="false"/>
 							</b:column>
 						</b:row>
 			
@@ -99,8 +101,7 @@
 		
 		<b:row>
 			<h1 style="text-align: center">Lista de Elecciones</h1>
-			<b:dataTable value="#{busqueda.eleccionesEncontradas}" var="eleccion"
-						renderer="#{busqueda.mostrarTablaResultados}"
+			<b:dataTable value="#{busqueda.eleccionesEncontradas}" var="eleccion" renderer="false"
 						id="bElection" styleClass="table table-striped table-bordered"
 						style="width:100%">
 				

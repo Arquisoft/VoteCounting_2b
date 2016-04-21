@@ -2,7 +2,6 @@ package es.uniovi.asw.infrastructure;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 
 public class ParamsManager
@@ -10,7 +9,7 @@ public class ParamsManager
 	private ParamsManager() {}
 	
 	
-	public static boolean areStringsNotNullAndNotEmpty(String... params)
+	public static boolean areStrings_NotNull_And_NotEmpty(String... params)
 	{
 		for(String element : params)
 		{

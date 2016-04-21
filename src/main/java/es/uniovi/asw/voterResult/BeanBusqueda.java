@@ -3,6 +3,8 @@ package es.uniovi.asw.voterResult;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.validation.ValidationException;
 
 import org.springframework.context.annotation.Scope;
@@ -17,16 +19,6 @@ import es.uniovi.asw.infrastructure.ParamsManager;
 @Scope("request")
 public class BeanBusqueda
 {
-	/*
-	 * Variable que indica si se debe mostrar al usuario una tabla con
-	 * los resultados de la búsqueda de elecciones que cumplan unos
-	 * determinados criterios.
-	 * 
-	 */
-	private boolean mostrarTablaResultados = false;
-	
-	
-	
 	// Lista de elecciones que encajan con los criterios de búsqueda
 	private List<Election> eleccionesEncontradas;
 	
@@ -62,7 +54,10 @@ public class BeanBusqueda
 		
 		if (criteriosBusqueda.equals("fracaso"))
 		{
-			return "fracaso";
+			// Si la busqueda va mal no se carga la tabla de resultados
+			// Hay que cambiar el atributo renderer a false 
+			//
+			return null;
 		}
 		
 		/*
@@ -102,9 +97,10 @@ public class BeanBusqueda
 		}
 		
 		
-		mostrarTablaResultados = true;   // Si se han pasado unos criterios válidos entonces mostrar el resultado
-		
-		return "exito";
+		// Si la busqueda va bien se carga la tabla de resultados
+		// Hay que cambiar el atributo renderer a false 
+		//
+		return null;
 	}
 	
 	
@@ -112,7 +108,7 @@ public class BeanBusqueda
 	{
 		String criterios = "";
 		
-		if( ParamsManager.areStringsNotNullAndNotEmpty(nombreProceso) )
+		if( ParamsManager.areStrings_NotNull_And_NotEmpty(nombreProceso) )
 		{
 			criterios += "nom ";
 		}
@@ -136,11 +132,14 @@ public class BeanBusqueda
 	}
 	
 	
-	public void validarFecha(String fecha)
+	public boolean validarFecha(String id, String fecha)
 	{
-		if( !ParamsManager.isDateValid(formatoFechas, fechaFinProceso) )
+		if(ParamsManager.areStrings_NotNull_And_NotEmpty(fecha) && !ParamsManager.isDateValid(formatoFechas, fecha) )
 		{
-			throw new ValidationException("");
+			FacesContext.getCurrentInstance().addMessage(id, new FacesMessage("La fecha indicada no es válida"));
+			
+			
+			return false;
 		}
 	}
 	
@@ -199,16 +198,5 @@ public class BeanBusqueda
 	public void setEleccionesEncontradas(List<Election> eleccionesEncontradas)
 	{
 		this.eleccionesEncontradas = eleccionesEncontradas;
-	}
-	
-	
-	public boolean getMostrarTablaResultados()
-	{
-		return mostrarTablaResultados;
-	}
-	
-	public void setMostrarTablaResultados(boolean mostrarTablaResultados)
-	{
-		this.mostrarTablaResultados = mostrarTablaResultados;
 	}
 }
