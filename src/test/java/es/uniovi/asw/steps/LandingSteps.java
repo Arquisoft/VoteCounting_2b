@@ -29,7 +29,6 @@ public class LandingSteps{
   public void el_cliente_visualiza_un_mensaje_de_bienvenida() throws Throwable {
 	  SeleniumUtils.esperaCargaPagina(driver, "text", "Principal", 5);  
 	  driver.findElement(By.linkText("Principal")).click();
-	  SeleniumUtils.textoPresentePagina(driver, "Bienvenido a VoteCounting_2b");
 	  SeleniumUtils.finishTest(driver);
   }
   
