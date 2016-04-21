@@ -17,8 +17,7 @@
 			<b:column>
 				<h:form>
 					<h1>Bienvenido a voteCouting_2b</h1>
-					<b:row>
-						
+					
 					<b:panel title="Criterios de búsqueda de un proceso electoral"
 						collapsible="false" look="primary">
 						<b:row>
@@ -99,58 +98,60 @@
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		
 		<b:row>
-			<b:column>
-				<h1 style="text-align: center">Lista de Elecciones</h1>
-				<b:dataTable value="#{BeanListaElecciones.elecciones}" var="eleccion"
-				id="bElection" styleClass="table table-striped table-bordered"
-				style="width:100%">
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="Nombre" />
-						</f:facet>
-						<h:outputText value="#{eleccion.name}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="Fecha de Comienzo" />
-						</f:facet>
-						<h:outputText value="#{eleccion.startDate}">
-							<f:convertDateTime pattern="d-M-yyyy" />
-						</h:outputText>
-
-					</h:column>
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="Fecha de Fin" />
-						</f:facet>
-						<h:outputText value="#{eleccion.expiryDate}">
-							<f:convertDateTime pattern="d-M-yyyy" />
-						</h:outputText>
-
-					</h:column>
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="Numero Votos" />
-						</f:facet>
-						<h:outputText value="#{eleccion.countVotes()}" />
-					</h:column>
-					
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="Consultar Resultados" />
-						</f:facet>
-						<h:form>
-							<b:commandButton ajax="true" value="Resultados" look="primary"
-								actionListener="#{BeanRecuento.recuentoVotos(eleccion)}"
-								action="#{BeanResultados.mostrarGraficos}"
-								rendered="#{eleccion.readyToRecount()}" />
-							<b:commandButton ajax="true" value="No se ha realizado el recuento"
-								look="danger" rendered="#{eleccion.readyToRecount()==false}" />
-						</h:form>
-					</h:column>
-				</b:dataTable>
-			<b:column>
-		<b:row>
+			<h1 style="text-align: center">Lista de Elecciones</h1>
+			<b:dataTable value="#{busqueda.eleccionesEncontradas}" var="eleccion"
+						renderer="#{busqueda.mostrarTablaResultados}"
+						id="bElection" styleClass="table table-striped table-bordered"
+						style="width:100%">
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Nombre" />
+					</f:facet>
+					<h:outputText value="#{eleccion.name}" />
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Fecha de Comienzo" />
+					</f:facet>
+					<h:outputText value="#{eleccion.startDate}">
+						<f:convertDateTime pattern="d-M-yyyy" />
+					</h:outputText>
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Fecha de Fin" />
+					</f:facet>
+					<h:outputText value="#{eleccion.expiryDate}">
+						<f:convertDateTime pattern="d-M-yyyy" />
+					</h:outputText>
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Numero Votos" />
+					</f:facet>
+					<h:outputText value="#{eleccion.countVotes()}" />
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Consultar Resultados" />
+					</f:facet>
+					<h:form>
+						<b:commandButton ajax="true" value="Resultados" look="primary"
+							actionListener="#{BeanRecuento.recuentoVotos(eleccion)}"
+							action="#{BeanResultados.mostrarGraficos}"
+							rendered="#{eleccion.readyToRecount()}" />
+							
+						<b:commandButton ajax="true" value="No se ha realizado el recuento"
+							look="danger" rendered="#{eleccion.readyToRecount()==false}" />
+					</h:form>
+				</h:column>
+			</b:dataTable>
+		</b:row>
 	</b:container>
 </h:body>
 </html>

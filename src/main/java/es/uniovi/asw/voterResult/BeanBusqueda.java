@@ -101,6 +101,9 @@ public class BeanBusqueda
 				break;
 		}
 		
+		
+		mostrarTablaResultados = true;   // Si se han pasado unos criterios válidos entonces mostrar el resultado
+		
 		return "exito";
 	}
 	
