@@ -15,9 +15,6 @@ import org.springframework.web.context.ServletContextAware;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
-import es.uniovi.asw.infrastructure.TimerBBDD;
-
-
 @Controller
 @SpringBootApplication
 @EnableAutoConfiguration
