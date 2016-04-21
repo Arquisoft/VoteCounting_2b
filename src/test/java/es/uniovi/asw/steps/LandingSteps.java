@@ -59,8 +59,8 @@ public class LandingSteps{
   @Entonces("^el cliente visualiza un mensaje de bienvenida")
   public void el_cliente_visualiza_un_mensaje_de_bienvenida() throws Throwable {
 	  driver.get(baseUrl + "/principal.xhtml");
-	  assertEquals("Bienvenido a voteCouting_2b", driver.findElement(By.cssSelector("h1")).getText());
-	  Factory.textoPresentePagina(driver, "Bienvenido a voteCouting_2b");
+	  assertEquals("Bienvenido a VoteCounting_2b", driver.findElement(By.cssSelector("h1")).getText());
+	  Factory.textoPresentePagina(driver, "Bienvenido a VoteCounting_2b");
   }
   
 	
