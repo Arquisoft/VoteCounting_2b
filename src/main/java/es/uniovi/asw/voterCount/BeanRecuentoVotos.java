@@ -24,7 +24,8 @@ public class BeanRecuentoVotos {
 	
 	public void recuentoVotos(Election e) {;
 	
-		TimerBBDD.mantenimientoBBDD();
+		//TODO
+		//TimerBBDD.mantenimientoBBDD();
 
 		RecuentoService recuento = Factories.services.createRecuentoService();
 
