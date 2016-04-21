@@ -354,12 +354,12 @@ public class DbManagementTest {
         User user7 = new User("Pepe", "12345678P", null, 2, null);
 
         assertTrue(user1.equals(user1));
-        assertFalse(user2.equals(user2));
-        assertFalse(user3.equals(user3));
-        assertFalse(user4.equals(user4));
-        assertFalse(user5.equals(user5));
-        assertFalse(user6.equals(user6));
-        assertFalse(user7.equals(user7));
+        assertTrue(user2.equals(user2));
+        assertTrue(user3.equals(user3));
+        assertTrue(user4.equals(user4));
+        assertTrue(user5.equals(user5));
+        assertTrue(user6.equals(user6));
+        assertTrue(user7.equals(user7));
         
         assertTrue(user1.equals(user2));
         assertFalse(user1.equals(user3));
