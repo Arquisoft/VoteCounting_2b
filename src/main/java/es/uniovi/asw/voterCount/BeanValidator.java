@@ -4,8 +4,6 @@ import javax.faces.context.FacesContext;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-
-import es.uniovi.asw.infrastructure.TimerBBDD;
 import es.uniovi.asw.voterCount.business.ValidatorService;
 import es.uniovi.asw.voterCount.business.impl.SimpleValidatorService;
 

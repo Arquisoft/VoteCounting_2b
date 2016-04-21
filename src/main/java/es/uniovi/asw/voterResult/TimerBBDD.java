@@ -1,4 +1,4 @@
-package es.uniovi.asw.infrastructure;
+package es.uniovi.asw.voterResult;
 
 import java.util.Timer;
 import java.util.TimerTask;
