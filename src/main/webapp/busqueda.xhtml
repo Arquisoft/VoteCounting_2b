@@ -13,9 +13,9 @@
 	<ui:include src="/snippets/navegacion.xhtml" />
 
 	<b:container layout="fluid">
-	<h1 style="text-align: center">Busqueda Personalizada</h1>
+		<h1 style="text-align: center">Busqueda Personalizada</h1>
 		<b:row>
-			<b:column span="6">
+			<b:column>
 				<h:form>
 
 					<b:panel title="Criterios de búsqueda de un proceso electoral"
@@ -31,7 +31,7 @@
 							</b:column>
 
 							<b:column>
-								<b:messages for="nombreProceso" redisplay="false" />
+								<b:message for="nombreProceso" />
 							</b:column>
 						</b:row>
 
@@ -53,7 +53,7 @@
 							</b:column>
 
 							<b:column>
-								<b:messages for="fechaInicio" redisplay="false" />
+								<b:message for="fechaInicio" />
 							</b:column>
 						</b:row>
 
@@ -75,7 +75,7 @@
 							</b:column>
 
 							<b:column>
-								<p:message for="fechaFin" redisplay="false" />
+								<b:message for="fechaFin" />
 							</b:column>
 						</b:row>
 
@@ -85,11 +85,12 @@
 
 
 						<b:row>
-							<b:column medium-screen="2">
+							<b:column>
 								<b:commandButton value="buscar" action="#{busqueda.buscar}"
-									look="primary" style="width:100%" />
+												look="primary" style="width:100%" />
 							</b:column>
 						</b:row>
+						
 					</b:panel>
 				</h:form>
 			</b:column>

@@ -54,9 +54,16 @@ public class BeanBusqueda
 		
 		if (criteriosBusqueda.equals("fracaso"))
 		{
+			FacesMessage mensaje = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error!", "Tiene que indicar al menos un criterio de búsqueda válido");
+			FacesContext.getCurrentInstance().addMessage(null, mensaje);
+			
+			
 			// Si la busqueda va mal no se carga la tabla de resultados
 			// Hay que cambiar el atributo renderer a false 
 			//
+			eleccionesEncontradas = new ArrayList<Election>(); // Por el momento se deja vacía
+			
+			
 			return null;
 		}
 		
@@ -66,9 +73,9 @@ public class BeanBusqueda
 		switch (criteriosBusqueda)
 		{
 			case "nom ":
-				//eleccionesEncontradas = Repository.electionR.findByNameContaining(nombreProceso);
+				eleccionesEncontradas = Repository.electionR.findByNameContaining(nombreProceso);
 				eleccionesEncontradas = new ArrayList<Election>();
-				eleccionesEncontradas.add( Repository.electionR.findByName("Independencia Cataluña") );
+				//eleccionesEncontradas.add( Repository.electionR.findByName("Independencia Cataluña") );
 				break;
 				
 			case "nom ini ":
@@ -113,12 +120,12 @@ public class BeanBusqueda
 			criterios += "nom ";
 		}
 		
-		if(!ParamsManager.isDateValid(formatoFechas, fechaInicioProceso))
+		if( ParamsManager.isDateValid(formatoFechas, fechaInicioProceso) )
 		{
 			criterios += "ini ";
 		}
 		
-		if(!ParamsManager.isDateValid(formatoFechas, fechaFinProceso))
+		if( ParamsManager.isDateValid(formatoFechas, fechaFinProceso) )
 		{
 			criterios += "fin";
 		}
@@ -132,11 +139,11 @@ public class BeanBusqueda
 	}
 	
 	
-	public void validarFecha(String id, String fecha)
+	public void validarFecha(String fecha)
 	{
 		if(ParamsManager.areStrings_NotNull_And_NotEmpty(fecha) && !ParamsManager.isDateValid(formatoFechas, fecha) )
 		{
-			FacesContext.getCurrentInstance().addMessage(id, new FacesMessage("La fecha indicada no es válida"));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("La fecha indicada no es válida"));
 			
 			throw new ValidationException();
 		}
