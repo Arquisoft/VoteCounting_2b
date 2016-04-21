@@ -59,10 +59,15 @@ public class BeanBusqueda
 	{		
 		String criteriosBusqueda = evaluarParametrosBusqueda();
 		
-		if (criteriosBusqueda.equals("fracaso"))
+		
+		if (criteriosBusqueda.equals("errores"))
 		{
-			FacesMessage mensaje = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error!", "Tiene que indicar al menos un criterio de búsqueda válido");
-			faces.getCurrentInstance().addMessage("busqueda", mensaje);
+			return null;
+		}
+		
+		else if(criteriosBusqueda.equals("camposVacios"))
+		{
+			// "Tiene que indicar al menos un criterio de búsqueda válido"
 			
 			
 			// Si la busqueda va mal no se carga la tabla de resultados
@@ -73,6 +78,7 @@ public class BeanBusqueda
 			
 			return null;
 		}
+		
 		
 		/*
 		 * nom = nombreProceso,  ini = fechaInicio,  fin = fechaFin
@@ -112,7 +118,6 @@ public class BeanBusqueda
 		
 		
 		// Si la busqueda va bien se carga la tabla de resultados
-		// Hay que cambiar el atributo renderer a false 
 		//
 		return null;
 	}
@@ -121,48 +126,66 @@ public class BeanBusqueda
 	private String evaluarParametrosBusqueda()
 	{
 		String criterios = "";
+		boolean camposVacios = true;
+		
 		
 		if( ParamsManager.areStrings_NotNull_And_NotEmpty(nombreProceso) )
 		{
 			criterios += "nom ";
+			camposVacios = false;
 		}
 		
-		if( ParamsManager.isDateValid(formatoFechas, fechaInicioProceso) )
+		if( ParamsManager.areStrings_NotNull_And_NotEmpty(fechaInicioProceso) )
 		{
-			criterios += "ini ";
+			camposVacios = false;
+			
+			if( validarFecha(fechaInicioProceso) )
+			{
+				criterios += "ini ";
+			}
 		}
 		
-		if( ParamsManager.isDateValid(formatoFechas, fechaFinProceso) )
+		if( ParamsManager.areStrings_NotNull_And_NotEmpty(fechaFinProceso) )
 		{
-			criterios += "fin";
+			camposVacios = false;
+			
+			if( validarFecha(fechaFinProceso) )
+			{
+				criterios += "fin";
+			}
 		}
 		
-		if(criterios.equals(""))
+		
+		/* Se comprueba el resultado de
+		 * evaluar los compos del formulario
+		 * 
+		 */
+		
+		if( camposVacios == false )
 		{
-			return "fracaso";
+			return "camposVacios";
+		}
+		
+		if( criterios.equals("") )
+		{
+			return "errores";
 		}
 		
 		return criterios;
 	}
 	
 	
-	public void validarFecha(String fecha)
+	public boolean validarFecha(String fecha)
 	{
-		/* 
-		 * Si se indicó alguna fecha
+		/*
+		 * Si no es una fecha válida
 		 */
-		if(!ParamsManager.areStrings_NotNull_And_NotEmpty(fecha) )
+		if(!ParamsManager.isDateValid(formatoFechas, fecha))
 		{
-			/*
-			 * Si no es una fecha válida
-			 */
-			if(!ParamsManager.isDateValid(formatoFechas, fecha))
-			{
-				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("La fecha indicada no es válida"));
-				
-				throw new ValidationException();
-			}
+			// "La fecha indicada no es válida"
 		}
+		
+		return false;
 	}
 	
 	

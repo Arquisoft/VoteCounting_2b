@@ -11,12 +11,12 @@
 </h:head>
 <h:body>
 	<ui:include src="/snippets/navegacion.xhtml" />
-
+	
 	<b:container layout="fluid">
 		<h1 style="text-align: center">Busqueda Personalizada</h1>
 		<b:row>
 			<b:column>
-				<h:form>
+				<h:form id="formularioBusqueda">
 
 					<b:panel title="Criterios de búsqueda de un proceso electoral"
 						collapsible="false" look="primary">
@@ -28,10 +28,6 @@
 							<b:column>
 								<b:inputText id="nombreProceso" placeholder="Nombre del proceso"
 									value="#{busqueda.nombreProceso}" />
-							</b:column>
-
-							<b:column>
-								<b:message for="nombreProceso" />
 							</b:column>
 						</b:row>
 						
@@ -47,13 +43,8 @@
 
 							<b:column>
 								<b:datepicker id="fechaInicio" mode="toggle-icon"
-									validator="#{busqueda.validarFecha(busqueda.fechaInicioProceso)}"
 									placeholder="Fecha de inicio del proceso"
 									value="#{busqueda.fechaInicioProceso}" />
-							</b:column>
-
-							<b:column>
-								<b:message for="fechaInicio" />
 							</b:column>
 						</b:row>
 						
@@ -70,13 +61,8 @@
 							<b:column>
 								<b:datepicker id="fechaFin" mode="toggle-icon"
 									placeholder="Fecha en la que termina el proceso"
-									validator="#{busqueda.validarFecha(busqueda.fechaFinProceso)}"
 									value="#{busqueda.fechaFinProceso}" />
 							</b:column>
-
-							<b:column>
-								<b:message for="fechaFin" />
-							</b:column>
 						</b:row>
 
 
@@ -86,16 +72,8 @@
 
 						<b:row>
 							<b:column>
-								<b:commandButton id="busqueda" value="buscar" action="#{busqueda.buscar}"
-												look="primary" style="width:100%"
-												ajax="tue" update="@form"/>
-							</b:column>
-						</b:row>
-						
-						
-						<b:row>
-							<b:column>
-								<b:message for ="busqueda"/>
+								<b:commandButton id="botonBusqueda" value="buscar" action="#{busqueda.buscar}"
+												look="primary" style="width:100%"/>
 							</b:column>
 						</b:row>
 					</b:panel>
@@ -103,23 +81,23 @@
 			</b:column>
 		</b:row>
 
-		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
+		
 		<br />
-		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
+		
 
 		<b:row>
 			<h1 style="text-align: center">Lista de Elecciones</h1>
-			<b:dataTable value="#{busqueda.eleccionesEncontradas}" var="eleccion"
-				renderer="false" id="bElection"
+			
+			<b:dataTable id="tablaResultados" value="#{busqueda.eleccionesEncontradas}" var="eleccion"
 				styleClass="table table-striped table-bordered" style="width:100%">
-
+				
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Nombre" />
 					</f:facet>
 					<h:outputText value="#{eleccion.name}" />
 				</h:column>
-
+				
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Fecha de Comienzo" />
@@ -128,7 +106,7 @@
 						<f:convertDateTime pattern="d-M-yyyy" />
 					</h:outputText>
 				</h:column>
-
+				
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Fecha de Fin" />
@@ -137,14 +115,14 @@
 						<f:convertDateTime pattern="d-M-yyyy" />
 					</h:outputText>
 				</h:column>
-
+				
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Numero Votos" />
 					</f:facet>
 					<h:outputText value="#{eleccion.countVotes()}" />
 				</h:column>
-
+				
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Consultar Resultados" />
@@ -154,7 +132,7 @@
 							actionListener="#{BeanRecuento.recuentoVotos(eleccion)}"
 							action="#{BeanResultados.mostrarGraficos}"
 							rendered="#{eleccion.readyToRecount()}" />
-
+						
 						<b:commandButton ajax="true"
 							value="No se ha realizado el recuento" look="danger"
 							rendered="#{eleccion.readyToRecount()==false}" />
