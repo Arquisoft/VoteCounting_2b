@@ -43,13 +43,17 @@ public class LookSteps extends Factory {
 
 	@Y("^selecciona una eleccion de la que quiere saber los resultados")
 	public void selecciona_una_eleccion_de_la_que_quiere_saber_los_resultados() throws Throwable {
-		
 	    new Select(driver.findElement(By.name("bElection_length"))).selectByVisibleText("25");
 	    new Select(driver.findElement(By.name("bElection_length"))).selectByVisibleText("50");
 	    new Select(driver.findElement(By.name("bElection_length"))).selectByVisibleText("100");
 	    driver.findElement(By.cssSelector("th.sorting_asc")).click();
 	    driver.findElement(By.cssSelector("th.sorting")).click();
-		driver.findElement(By.cssSelector("input.form-control.input-sm")).sendKeys("cataluña");
+		//driver.findElement(By.cssSelector("input.form-control.input-sm")).sendKeys("cataluña");
+		//driver.findElement(By.cssSelector("input.form-control.input-sm")).sendKeys("");
+		
+		driver.findElement(By.id("bElection:0:j_idt30:j_idt31")).click();
+		
+		SeleniumUtils.esperaCargaPagina(driver, "text", "Opciones", 2);
 		
 		 SeleniumUtils.finishTest(driver);
 	}
