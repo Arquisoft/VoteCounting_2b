@@ -11,7 +11,6 @@ import org.primefaces.model.chart.ChartSeries;
 import org.primefaces.model.chart.PieChartModel;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-
 import es.uniovi.asw.voterCount.BeanRecuentoVotos;
 
 @Component("BeanResultados")

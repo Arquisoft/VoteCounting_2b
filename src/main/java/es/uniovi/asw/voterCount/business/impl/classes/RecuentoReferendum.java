@@ -6,6 +6,7 @@ import java.util.HashSet;
 import es.uniovi.asw.dbManagement.model.Election;
 import es.uniovi.asw.dbManagement.model.Vote;
 import es.uniovi.asw.dbManagement.model.VoteReferendum;
+import es.uniovi.asw.dbManagement.persistence.Repository;
 
 public class RecuentoReferendum {
 
@@ -17,6 +18,10 @@ public class RecuentoReferendum {
 		int no = 0;
 
 		for (Vote v : votos) {
+			if(!v.isReadyToRecount()){
+				v.setReadyToRecount(true);
+				Repository.voteR.save(v);
+			}
 			VoteReferendum vr = (VoteReferendum) v;
 			yes += vr.getYeses();
 			no += vr.getNoes();

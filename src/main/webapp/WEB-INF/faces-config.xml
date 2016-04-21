@@ -70,4 +70,35 @@
 		</navigation-case>
 	</navigation-rule>
 
+
+	<navigation-rule>
+		<from-view-id>listaEleccionesSinRecuento.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{BeanResultados.mostrarGraficos}</from-action>
+			<from-outcome>exito</from-outcome>
+			<to-view-id>/mostrarResultadosElectoral.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>listaEleccionesSinRecuento.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{BeanValidator.cerrarSesion}</from-action>
+			<from-outcome>exito</from-outcome>
+			<to-view-id>/principal.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>mostrarResultadosElectoral.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{BeanValidator.cerrarSesion}</from-action>
+			<from-outcome>exito</from-outcome>
+			<to-view-id>/principal.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	
 </faces-config>

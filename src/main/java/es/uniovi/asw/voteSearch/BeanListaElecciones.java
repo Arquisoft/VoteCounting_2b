@@ -67,7 +67,6 @@ public class BeanListaElecciones
 				listaSinRecuento.add(e);
 		}
 		
-		System.out.println("BeanListaElecciones creado");
 	}
 	
 	

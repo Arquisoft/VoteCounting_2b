@@ -6,6 +6,7 @@ import es.uniovi.asw.dbManagement.model.ClosedList;
 import es.uniovi.asw.dbManagement.model.Election;
 import es.uniovi.asw.dbManagement.model.OpenList;
 import es.uniovi.asw.dbManagement.model.Referendum;
+import es.uniovi.asw.infrastructure.TimerBBDD;
 import es.uniovi.asw.voterCount.business.RecuentoService;
 import es.uniovi.asw.voterCount.infrastructure.Factories;
 
@@ -23,6 +24,8 @@ public class BeanRecuentoVotos {
 	
 	public void recuentoVotos(Election e) {;
 	
+		TimerBBDD.mantenimientoBBDD();
+
 		RecuentoService recuento = Factories.services.createRecuentoService();
 
 		if (e instanceof Referendum) {
