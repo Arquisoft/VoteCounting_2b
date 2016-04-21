@@ -132,14 +132,13 @@ public class BeanBusqueda
 	}
 	
 	
-	public boolean validarFecha(String id, String fecha)
+	public void validarFecha(String id, String fecha)
 	{
 		if(ParamsManager.areStrings_NotNull_And_NotEmpty(fecha) && !ParamsManager.isDateValid(formatoFechas, fecha) )
 		{
 			FacesContext.getCurrentInstance().addMessage(id, new FacesMessage("La fecha indicada no es válida"));
 			
-			
-			return false;
+			throw new ValidationException();
 		}
 	}
 	
