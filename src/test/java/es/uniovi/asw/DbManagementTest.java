@@ -376,6 +376,16 @@ public class DbManagementTest {
         assertFalse(user5.equals(user3));
         assertFalse(user5.equals(user4));
         
+        TurnoutKey tkey = new TurnoutKey();
+        TurnoutKey tkey2 = tkey;
+        
+        VoteKey vkey = new VoteKey();
+        VoteKey vkey2 = vkey;
+        
+        assertTrue(tkey.equals(tkey2));
+        tkey.hashCode();
+        assertTrue(vkey.equals(vkey2));
+        vkey2.hashCode();
 
     }
 	@Test
