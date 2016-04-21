@@ -11,7 +11,7 @@
 	</application>
 	
 	<navigation-rule>
-		<from-view-id>principal.xhtml</from-view-id>
+		<from-view-id>busqueda.xhtml</from-view-id>
 		<navigation-case>
 			<from-action>#{busqueda.buscar}</from-action>
 			<from-outcome>exito</from-outcome>

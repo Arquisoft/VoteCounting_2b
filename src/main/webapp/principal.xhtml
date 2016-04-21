@@ -11,147 +11,26 @@
 </h:head>
 <h:body>
 	<ui:include src="/snippets/navegacion.xhtml" />
-	
+
 	<b:container layout="fluid">
 		<b:row>
-			<b:column>
-				<h:form>
-					<h1>Bienvenido a voteCouting_2b</h1>
-					
-					<b:panel title="Criterios de búsqueda de un proceso electoral"
-						collapsible="false" look="primary">
-						<b:row>
-							<b:column >
-								<h:outputText value="Buscar por nombre:" />
-							</b:column>
-							
-							<b:column>
-								<b:inputText id="nombreProceso" placeholder="Nombre del proceso"
-											value="#{busqueda.nombreProceso}"/>
-							</b:column>
-							
-							<b:column >
-								<b:messages for="nombreProceso" redisplay="false"/>
-							</b:column>
-						</b:row>
-						
-						
-						<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-						<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-						
-						
-						<b:row>
-							<b:column>
-								<h:outputText value="Buscar por fecha de inicio:" />
-							</b:column>
-							
-							<b:column >
-								<b:datepicker id="fechaInicio" mode="toggle-icon"
-									validator="#{busqueda.validarFecha(busqueda.fechaInicioProceso)}"
-									placeholder="Fecha de inicio del proceso"
-									value="#{busqueda.fechaInicioProceso}"/>
-							</b:column>
-							
-							<b:column >
-								<b:messages for="fechaInicio" redisplay="false"/>
-							</b:column>
-						</b:row>
-						
-						
-						<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-						<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-						
-						
-						<b:row>
-							<b:column >
-								<h:outputText value="Buscar por fecha de fin:" />
-							</b:column>
-							
-							<b:column >
-								<b:datepicker id="fechaFin" mode="toggle-icon"
-									placeholder="Fecha en la que termina el proceso"
-									validator="#{busqueda.validarFecha(busqueda.fechaFinProceso)}"
-									value="#{busqueda.fechaFinProceso}"/>
-							</b:column>
-							
-							<b:column >
-								<p:message for="fechaFin" redisplay="false"/>
-							</b:column>
-						</b:row>
-			
-			
-						<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-						<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-			
-			
-						<b:row>
-							<b:column medium-screen="2">
-								<b:commandButton value="buscar" action="#{busqueda.buscar}"
-									look="primary" style="width:100%" />
-							</b:column>
-						</b:row>
-					</b:panel>
-				</h:form>
-			</b:column>
-		</b:row>	
-		
-		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-		<br />
-		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-		
-		<b:row>
-			<h1 style="text-align: center">Lista de Elecciones</h1>
-			<b:dataTable value="#{busqueda.eleccionesEncontradas}" var="eleccion" renderer="false"
-						id="bElection" styleClass="table table-striped table-bordered"
-						style="width:100%">
-				
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Nombre" />
-					</f:facet>
-					<h:outputText value="#{eleccion.name}" />
-				</h:column>
-				
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Fecha de Comienzo" />
-					</f:facet>
-					<h:outputText value="#{eleccion.startDate}">
-						<f:convertDateTime pattern="d-M-yyyy" />
-					</h:outputText>
-				</h:column>
-				
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Fecha de Fin" />
-					</f:facet>
-					<h:outputText value="#{eleccion.expiryDate}">
-						<f:convertDateTime pattern="d-M-yyyy" />
-					</h:outputText>
-				</h:column>
-				
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Numero Votos" />
-					</f:facet>
-					<h:outputText value="#{eleccion.countVotes()}" />
-				</h:column>
-				
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Consultar Resultados" />
-					</f:facet>
-					<h:form>
-						<b:commandButton ajax="true" value="Resultados" look="primary"
-							actionListener="#{BeanRecuento.recuentoVotos(eleccion)}"
-							action="#{BeanResultados.mostrarGraficos}"
-							rendered="#{eleccion.readyToRecount()}" />
-							
-						<b:commandButton ajax="true" value="No se ha realizado el recuento"
-							look="danger" rendered="#{eleccion.readyToRecount()==false}" />
-					</h:form>
-				</h:column>
-			</b:dataTable>
+			<b:column >
+		<b:jumbotron>
+                    <h1>Bienvenido a voteCouting_2b</h1>
+                    <p>Esto es un protipo de una aplicacion web. Entre sus funciones:</p>
+                    <ul>
+                    	<li> <p>Ver una lista de elecciones en curso o terminadas.</p></li>
+        				<li> <p>Consultar los resultados de una elección.</p>   </li>
+        				<li> <p>Iniciar el recuento de una eleccion por parte de la Junta Electoral.</p>   </li>
+                    </ul>  
+                    <p>
+                        <a class="btn btn-lg btn-primary" href="/listaElecciones.xhtml" role="button">
+                        <span>Consultar Lista de Elecciones </span>
+                        <span><i class="glyphicon glyphicon-chevron-right"></i>
+                        </span></a>
+                    </p>
+        </b:jumbotron>
+		</b:column>
 		</b:row>
 	</b:container>
 </h:body>

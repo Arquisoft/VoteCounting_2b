@@ -4,10 +4,11 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:b="http://bootsfaces.net/ui" 
 	xmlns:p="http://primefaces.org/ui">
-	
-	<b:navBar brand="VoteCounting" inverse="true">
+	 
+	<b:navBar brand="VoteCounting" brandHref="principal.xhtml" inverse="true">
 		<b:navbarLinks>
 			<b:navLink value="Principal" href="principal.xhtml"></b:navLink>
+			<b:navLink value="Busqueda Personalizada" href="busqueda.xhtml"></b:navLink>
 			<b:navLink value="Lista Elecciones" href="listaElecciones.xhtml"></b:navLink>
 			<b:dropMenu value="Tipos Elecciones">
 				<b:navLink value="Referendum" href="listaReferendum.xhtml"></b:navLink>
